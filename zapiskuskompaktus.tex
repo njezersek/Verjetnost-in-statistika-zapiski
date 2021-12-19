@@ -7,8 +7,23 @@
 \setlength{\multicolsep}{1pt}
 \setlength{\columnsep}{2pt}
 
+\section{Osnove kombinatorike}
+\subsection*{Izbori}
+Imamo $n$ oštevilčenih kroglic. Na koliko načinov lahko izberemo $k$ kroglic?
 
-\section{Verjetnost}
+\begin{center}
+    \begin{tabular}{ m{6em} | c | c | } 
+         & \textbf{s pon.} & \textbf{brez pon.}\\ 
+        \hline
+        \textbf{variacije} \emph{vrstni red je pomemben} & $n^k$ & $n^{\underline{k}}$ \\ 
+        \hline
+        \textbf{kombinacije} \emph{vrstni red ni pomemben} & $\binom{n+k-1}{k}$ & $\binom{n}{k}$ \\ 
+    \end{tabular}
+\end{center}
+
+\[\binom{n}{k} = \frac{n^{\underline{k}}}{k!} = \frac{n!}{k!(n-k)!} = \binom{n}{n-k}\]
+
+\section{Elementarna verjetnost}
 \begin{align*}
 	n \quad & \dots \quad \text{št. ponovitev poskusa} \\
 	A \quad & \dots \quad \text{dogodek} \\
@@ -24,7 +39,7 @@
 \subsection{Klasična definicija verjetnosti}
 pri poguju, da so vsi izidi enako verjetni
 
-\[ P(A) = \frac{\text{\# izidov }A}{\text{\# vseh možnih izidov}}\]
+\[ P(A) = \frac{\text{\# izidov }A}{\text{\# vseh izidov}}\]
 
 \subsection{Geometirjska definicija verjetnosti}
 če je število izidov neskončno, pogledamo razmerje ploščine vseh dogodkov in ugodnih dogodkov.
@@ -43,8 +58,12 @@ Imamo prostor vseh izidov oz. \textbf{vzorčni prostor} $\Omega$. Dogodki so nek
 	\text{distibutivnost} & \quad (A \cup B) \cap C = (A \cap C) \cup ( A \cap C) \\
 	& \quad (A \cap B) \cup C = (A \cap C) \cup ( A \cap C) \\
 	\text{De Morgan} & \quad \big(\bigcup_{i\in I} A_i \big)^\complement = \bigcap_{i \in I} A_i^\complement  \\
-	& \quad \big(\bigcap_{i\in I} A_i \big)^\complement = \bigcup_{i \in I} A_i^\complement
+	& \quad \big(\bigcap_{i\in I} A_i \big)^\complement = \bigcup_{i \in I} A_i^\complement \\
+	& \quad A \cup \Omega = \Omega \quad  A \cap \Omega = A \\
+	& \quad A \cup \emptyset = A \quad  A \cap \emptyset = \emptyset \\
+	& \quad A \cup A^\complement = \Omega \quad A \cap A^\complement = \emptyset
 \end{align*}
+
 
 Neprazna družina dogodkov $\mathcal{F}$ v $\Omega$ je $\sigma$-algebra, če velja
 \begin{itemize}
@@ -91,14 +110,165 @@ Lastnosti $P$:
 	\[ B_1 \supseteq B_2 \supseteq \dots \implies P\big(\bigcap_{i=1}^\infty\big) = \lim_{i \to \infty} P(B_i)\]
 \end{itemize}
 
+
+\[P(A^\complement) = 1 - P(A)\]
+\[ P(A \cup B) = P(A) + P(B) - P(A \cap B) \]
+
+Če lahko prostor izidov razbijemo na paroma nezdružljive enako verjetne dogodke, jih lahko obravnavamo kot izide: če je dogodek $A$ unija $k$ od $n$ takih dogodkov, je $P(A) = k/n$.
+
+\subsection{Načelo vključitev in izključitev}
+\begin{align*}
+	P(A_1 \cup A_2) &= P(A_1) + P(A_2) - P(A_1 \cap A_2)
+\end{align*}
+\[ P( \bigcup_{i=1}^n A_i) = \sum_{\emptyset \neq S \subseteq [n]} (-1)^{|S|+1} P(\bigcap_{i\in S} A_i)\]
+
 \section{Verjetnostni prostor}
 je trojček $(\Omega, \mathcal{F}, P)$, kjer je $\Omega$ množica vseh izidov, $\mathcal{F}$ $\sigma$-algebra in $P$ preslikava verjetnosti.
 
 
 Najmanjša algebra $\mathcal{F}$ na $\mathbb{N}$, ki vsebuje $ \{1\}, \{2\}, \dots$, je algebra \[g = \{ A \subseteq \mathbb{N} : \text{$A$ končna ali $A^\complement$ neskončna} \} \]
 
-\section{Pogojna verjetnost}
+\subsection{Pogojna verjetnost}
 \[ P(A | B) = \frac{P(A \cap B)}{P(B)}\]
+
+
+\subsection{Izrek o polni verjetnosti}
+Če $H_1, H_2, H_3, \dots $ tvorijo \textbf{popoln sistem dogodkov} \textit{(tj. vedno se zgodi natanko eden izmed njih)}, velja:
+\[ P(A) = P(H_1) P(A | H_1) + P(H_2) P(A | H_2) + \dots \]
+Dogodkom $H_i$ često pravimo hipoteze in jih je lahko končno ali pa števno
+neskončno
+
+\subsection{Bayesova formula}
+\[ P(H_i | A) = \frac{P(H_i)P(A | H_i)}{P(A)}\]
+\[ P(H_i | A) = \frac{P(H_i) P(A | H_i)}{P(H1) P(A | H1) + P(H2) P(A | H2) + \dots } \]
+
+Brezpogojnim verjetnostim $P(H_i)$ pravimo \textbf{apriorne}, pogojnim verjetnostim
+$P(H_i | A)$ pa \textbf{aposteriorne} verjetnosti hipotez.
+
+
+Dogodka A in B sta \textbf{neodvisna}, če velja:
+\[ P(A \cup B) = P(A) P(B) \]
+Če je $P(B) > 0$, je to ekvivalentno pogoju, da je $P(A | B) = P(A)$.
+Če je $0 < P(B) < 1$, pa je to ekvivalentno tudi pogoju, da je $P(A | B) = P(A | B^\complement)$.
+Dogodki $A1, A2, A3, \dots$ so neodvisni, če za poljubne različne indekse $i_1, i_2, \dots , i_k$ velja:
+\[ P(A_{i_1} \cap A_{i_2} \cap \dots \cap A_{i_k}) = P(A_{i_1}) P(A_{i_2}) \dots P(A_{i_k}) \]
+
+\subsection{Neodvisnot izpeljanih dogodkov *}
+Naj bo $\mathcal{F}$ družina dogodkov. S $\sigma(\mathcal{F})$ označimo najmanjšo $\sigma$-algebro, ki vsebuje
+$\mathcal{F}$, tj. družino vseh dogodkov, ki jih dobimo iz dogodkov iz $\mathcal{F}$ s števnimi unijami
+in komplementi.
+Naj bodo $A_{i,j}$ neodvisni dogodki. Tedaj so tudi poljubni dogodki $B_1 \in \sigma(A_{11}, A_{12}, \dots), B_2 \in \sigma(A_21, A22, . . .), B_3 \in \sigma(A_{31}, A_{32}, \dots), \dots$ neodvisni.
+
+
+\section{Diskretne slučajne spremenljivke}
+\subsection{Diskretne porazdelitve}
+\textbf{Diskretna enakomerna porazdelitev} na $n$ točkah:
+\[ X \sim \binom{a_1\ a_2\ \dots\ a_n}{\frac{1}{n}\ \frac{1}{n}\ \dots\ \frac{1}{n}} = \text{Unif} \{ a_1 , \dots , a_n \} \]
+
+\textbf{Binomska porazdelitev} \\
+$\text{Bin}(n, p)$, $n \in \mathbb{N}$, $p \in (0,1)$
+
+Naj bo $X$ št. uspelih (z verjetnostjo $p$) poskusov v zaporedju $n$ poskusov. $X \sim \text{Bin}(n, p)$:
+\[ p_k = P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}\]
+
+\textbf{Bernulijeva porazdelitev} $Ber(p) \sim Bin(1, p)$
+
+\textbf{Geometrijske porazdelitev} \\
+$\text{Geo}(p)$,  $p \in (0,1)$
+
+$(X = k)$ je dogodek, da se $A$ zgodi prvič v $k$-ti ponovitvi.
+
+\[P(X = k) = (1-p)^{k-1} p\]
+
+\textbf{Pascalova / negativna binomska porazdelitev} \\
+$Pas(m, p) = NB(m, p)$, $m \in \mathbb{N}$, $p \in (0,1)$
+
+$(X = k)$ je dogodek, da se dogodek $A$ zgodi $m$-tič v $k$-ti ponovitvi.
+
+Oziroma $X$ je število poskusov do vključno $m$-tega uspelega, pri katerig vsak uspe z verjetnostjo $p$. $X \sim Pas(m, p)$:
+\[ p_k = P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}\]
+
+\textbf{Hipergeometrijska porazdelitev} \\
+Iz posode, v kateri je $n$ kroglic, od tega $r$ rdečih, na slepo in brez vračanja
+izvlečemo $s$ kroglic. Če z $X$ označimo število rdečih med izvlečenimi, ima
+ta slučajna spremenljivka hipergeometrijsko porazdelitev: $X \sim \text{Hip}(s, r, n) = \text{Hip}(r, s, n)$. Velja
+
+\[ P(X = k) = \frac{\binom{r}{k} \binom{n-r}{s-k}}{\binom{n}{s}} = \frac{\binom{r}{k} \binom{n-s}{r-k}}{\binom{n}{r}}\]
+
+
+\subsection{Aproksimacija binomske porazdelitve}
+\textbf{Poissonova porazdelitev} \\
+$Poi(\lambda)$, $\lambda > 0$
+
+\[ p_k = P(X = k) = \frac{\lambda^k}{k!} e^{-\lambda}\]
+
+Če imamo veliko ponovitev ($n \to \infty$) z malo verjetnostjo ($p \to 0$), je $\text{Bin}(n, p) \approx \text{Poi}(np)$
+
+\textbf{Laplaceova lokalna formula: }
+Če je $p, 1-p \gg \frac{1}{n}$, lahko $X \sim \text{Bin}(n, p)$ aproksimiramo
+\[ P(X = k) \approx \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(k-np)^2}{2\sigma^2}} \quad \sigma = \sqrt{np(1-p)} \]
+
+\textbf{Laplaceova integralska formula: }
+\[ P(a \leq X \leq b) \approx \Phi\left( \frac{b - np}{\sigma} \right) - \Phi\left( \frac{a - np}{\sigma} \right) \]
+
+Za majhno relativno napako zahtevamo še: 
+\begin{itemize}
+	\item $|a-np| \ll \sigma^{4/3}$ ali $|b-np| \ll \sigma^{4/3}$ 
+	\item $a, b \in \mathbb{Z} + \frac{1}{2}$ ali $b - a \gg 1$
+\end{itemize}
+
+\subsection{Kumulativna porazdelitvena funkcija}
+\[ F_X(x) = P(X \leq x)\]
+
+\section{Zvezno porazdeljene slučajne spremenljivke}
+Realna slučajna spremenljivka $X$ je porazdeljena zvezno, če obstaja taka integrabilna funkcija $p_X: \mathbb{R} \to [0, \infty)$, da za poljubna $a \leq b$ velja:
+\[ P( a \leq X \leq b) = \int_a^b p_X(t) dx \]
+Funkciji $p_X$ pravimo \textbf{porazdelitvena gostota}
+
+
+Komulativna funkcija slučajne spremenljivke $X$
+\[ F_X(x) = \int_{\infty}^x p_X(t) dt \]
+
+Če je $F_X$ zvezna in odsekoma zvezno odvedljiva, je $X$ porazdeljena zvezno in za vse razen za končno mnogo točk $x$ velja $p_x(x) = F'_X(x)$.
+
+\subsection{Zvezne porazdelitve}
+\textbf{Enakomerna zvezna porazdelitev} na $ [a, b] $
+
+\[ p(x) = \begin{cases}
+	\frac{1}{b-a} & a \leq x \leq b \\
+	0 & \text{sicer}
+\end{cases}\]
+
+\[ F(x) = \begin{cases}
+	0 & x \leq a \\
+	\frac{x-a}{b-a} & a \leq x \leq b \\
+	1 & b \leq x
+\end{cases}\]
+
+\textbf{Normalna / Gaussova porazdelitev} $N(\mu, \sigma)$
+\[ p(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} \left( \frac{x-\mu}{\sigma} \right)^2}\]
+
+\[ F(x) = \frac{1}{2} + \Phi\left(\frac{x-\mu}{\sigma}\right)\]
+
+Standardizirana normalna porazdelitev: $N(0, 1)$
+
+\textbf{Eksponentna porazdelitev} $\text{Exp}(\lambda)$
+\[ p(x) = \begin{cases}
+	\lambda e^{-\lambda x} & x \geq 0 \\
+	0 & x < 0
+\end{cases}\]
+
+\[ F(x) = \begin{cases}
+	1-e^{-\lambda x} & x \geq 0 \\
+	0 & x < 0
+\end{cases}\]
+
+
+\textbf{Porazdelitev} $\Gamma(b,c)$, $b > 0$, $c > 0$
+\[ p(x) = \begin{cases}
+	\frac{c^b}{\Gamma(b)} x^{b-1} e^{-cx} & x \geq 0 \\
+	0 & x < 0
+\end{cases}\]
 
 
 \end{multicols}
