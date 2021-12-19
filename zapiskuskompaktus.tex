@@ -145,6 +145,7 @@ neskončno
 Brezpogojnim verjetnostim $P(H_i)$ pravimo \textbf{apriorne}, pogojnim verjetnostim
 $P(H_i | A)$ pa \textbf{aposteriorne} verjetnosti hipotez.
 
+\subsection{Neodvisnot dogodkov}
 
 Dogodka A in B sta \textbf{neodvisna}, če velja:
 \[ P(A \cup B) = P(A) P(B) \]
@@ -159,9 +160,10 @@ $\mathcal{F}$, tj. družino vseh dogodkov, ki jih dobimo iz dogodkov iz $\mathca
 in komplementi.
 Naj bodo $A_{i,j}$ neodvisni dogodki. Tedaj so tudi poljubni dogodki $B_1 \in \sigma(A_{11}, A_{12}, \dots), B_2 \in \sigma(A_21, A22, . . .), B_3 \in \sigma(A_{31}, A_{32}, \dots), \dots$ neodvisni.
 
+\section{Slučajne spremenljivke}
+Slučajna spremenljivka je funkcija $X: \Omega \to \mathbb{R}$ z lastnostijo, da je $\forall x \in \mathbb{R}$ množica $\{ \omega \in \Omega : X(\omega) < x \} \equiv X^{-1}((-\infty, x]) \equiv (X \leq x)$ dogodek.
 
-\section{Diskretne slučajne spremenljivke}
-\subsection{Diskretne porazdelitve}
+\subsubsection{Diskretne porazdelitve}
 \textbf{Diskretna enakomerna porazdelitev} na $n$ točkah:
 \[ X \sim \binom{a_1\ a_2\ \dots\ a_n}{\frac{1}{n}\ \frac{1}{n}\ \dots\ \frac{1}{n}} = \text{Unif} \{ a_1 , \dots , a_n \} \]
 
@@ -186,17 +188,17 @@ $Pas(m, p) = NB(m, p)$, $m \in \mathbb{N}$, $p \in (0,1)$
 $(X = k)$ je dogodek, da se dogodek $A$ zgodi $m$-tič v $k$-ti ponovitvi.
 
 Oziroma $X$ je število poskusov do vključno $m$-tega uspelega, pri katerig vsak uspe z verjetnostjo $p$. $X \sim Pas(m, p)$:
-\[ p_k = P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}\]
+\[ p_k = P(X = k) = \binom{k-1}{n-1} p^k (1-p)^{k-n}\]
 
 \textbf{Hipergeometrijska porazdelitev} \\
 Iz posode, v kateri je $n$ kroglic, od tega $r$ rdečih, na slepo in brez vračanja
 izvlečemo $s$ kroglic. Če z $X$ označimo število rdečih med izvlečenimi, ima
 ta slučajna spremenljivka hipergeometrijsko porazdelitev: $X \sim \text{Hip}(s, r, n) = \text{Hip}(r, s, n)$. Velja
 
-\[ P(X = k) = \frac{\binom{r}{k} \binom{n-r}{s-k}}{\binom{n}{s}} = \frac{\binom{r}{k} \binom{n-s}{r-k}}{\binom{n}{r}}\]
+\[ P(X = k) = \frac{\binom{r}{k} \binom{n-r}{s-k}}{\binom{n}{s}} = \frac{\binom{s}{k} \binom{n-s}{r-k}}{\binom{n}{r}}\]
 
 
-\subsection{Aproksimacija binomske porazdelitve}
+\subsubsection{Aproksimacija binomske porazdelitve}
 \textbf{Poissonova porazdelitev} \\
 $Poi(\lambda)$, $\lambda > 0$
 
@@ -217,10 +219,10 @@ Za majhno relativno napako zahtevamo še:
 	\item $a, b \in \mathbb{Z} + \frac{1}{2}$ ali $b - a \gg 1$
 \end{itemize}
 
-\subsection{Kumulativna porazdelitvena funkcija}
+\subsubsection{Kumulativna porazdelitvena funkcija}
 \[ F_X(x) = P(X \leq x)\]
 
-\section{Zvezno porazdeljene slučajne spremenljivke}
+\subsection{Zvezno porazdeljene slučajne spremenljivke}
 Realna slučajna spremenljivka $X$ je porazdeljena zvezno, če obstaja taka integrabilna funkcija $p_X: \mathbb{R} \to [0, \infty)$, da za poljubna $a \leq b$ velja:
 \[ P( a \leq X \leq b) = \int_a^b p_X(t) dx \]
 Funkciji $p_X$ pravimo \textbf{porazdelitvena gostota}
@@ -269,6 +271,51 @@ Standardizirana normalna porazdelitev: $N(0, 1)$
 	\frac{c^b}{\Gamma(b)} x^{b-1} e^{-cx} & x \geq 0 \\
 	0 & x < 0
 \end{cases}\]
+
+\textbf{Porazdelitev} $\chi^2(n)$ \\
+$n \in \mathbb{N}$ je št. prostorskih stopenj
+
+\[ \chi^2(n) = \Gamma(\frac{n}{2}), \frac{1}{2})\]
+
+\textbf{Cauchyjeva porazdelitev}
+\[ p(x) = \frac{1}{\pi (1+x^2)}\]
+\[ F(x) = \frac{1}{\pi} \arctan x + \frac{1}{2}\]
+
+\section{Slučajni vektorji}
+Slučajni vektor je $n$-terica slučajnih spremenljivk $X = (X_1, \dots , X_n): \Omega -> R$ 
+
+\subsubsection{Porazdelitvena funkcija slučajnega vektorja}
+\[ F_{(X_1, \dots , X_n)}(x_1, \dots , x_n) = P(X_1 \leq x_1, \dots , X_n \leq x_n)\]
+
+\subsection{Neodvisnot slučajnih spremenljivk}
+Slučajne spremenljivke so neodvisne, če je
+\[ F_{(X_1, \dots , X_n)}(x_1, \dots, x_n) = F_{X_1}(x_1) \dots F_{X_n}(x_n)\]
+Torej so dogodki $(X_1 \leq x_1), \dots , (X_n \leq x_n)$ neodvisni.
+
+Naj bo $(X, Y)$ diskretno porazdeljen sluč. vektor:
+\[ p_{ij} = P(X \leq x_i, Y \leq y_j) \quad p_i = P(X \leq x_i) \quad P(Y \leq y_j) \]
+potem velja:
+\[ X, Y \text{neodvisni} \iff p_{ij} = p_i q_j \]
+
+
+Naj bo $(X, Y)$ zvezno porazdeljen sluč. vektor z gostoto $ p_{(X, Y)}(x,y)$, potem velja:
+\[ X, Y \text{neodvisni} \iff \exists p_X, p_Y: p_{(X,Y)}(x,y) = p_X(x) p_Y(y)\]
+
+\subsection{Funkcije slučajnih spremenljivk}
+Naj bosta $A, B \subseteq \mathbb{R}$ odprti množici in $h: A \to B$ taka bijekcija, da je funkcija
+$h^{-1}: B \to A$ zvezno odvedljiva. Nadalje naj bo $X$ zvezno porazdeljena slučajna
+spremenljivka z gostoto $p_X$, ki je izven množice A enaka nič. Tedaj je slučajna
+spremenljivka $Y := h(X)$ porazdeljena zvezno z gostoto:
+
+\[ p_Y(y) = \begin{cases}
+	p_X\left( h^{-1}(y) \right) \left|(h^{-1})'(y)\right| & y \in B \\
+	0 & sicer	
+\end{cases}\]
+
+Naj bo $X$ zvezno porazdeljena slučajna spremenljivka z gostoto $p_X$, skoncentrirana na odprti množici $A$. Naj bo $h: A \to \mathbb{R}$ zvezno odvedljiva in $h'(x) \neq 0$ za $\forall x \in A$. 
+Tedaj je slučajna spremenljivka $Y = h(X)$ porazdeljena zvezno z gostoto:
+
+\[ p_Y = \sum_{\substack{x \in A \\ h(x) = y}} \frac{p_X(x)}{|h'(x)|}\]
 
 
 \end{multicols}
