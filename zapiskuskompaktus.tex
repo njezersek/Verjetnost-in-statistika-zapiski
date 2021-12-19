@@ -1,0 +1,106 @@
+\input{config.tex}
+\begin{document} 
+
+\begin{multicols}{4}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+
+\section{Verjetnost}
+\begin{align*}
+	n \quad & \dots \quad \text{št. ponovitev poskusa} \\
+	A \quad & \dots \quad \text{dogodek} \\
+	k_n(A) \quad & \dots \quad \text{frekvenca dogodka}
+\end{align*}
+
+\textbf{Relativna frekvenca} dogodka $A$:
+\[ f_n(A) = \frac{k_n(A)}{n} \]
+
+\subsection{Statistična definicija verjetnosti}
+\[ P(A) = \lim_{n \to \infty} f_n(A) \]
+
+\subsection{Klasična definicija verjetnosti}
+pri poguju, da so vsi izidi enako verjetni
+
+\[ P(A) = \frac{\text{\# izidov }A}{\text{\# vseh možnih izidov}}\]
+
+\subsection{Geometirjska definicija verjetnosti}
+če je število izidov neskončno, pogledamo razmerje ploščine vseh dogodkov in ugodnih dogodkov.
+
+\subsection{Aksiomatična definicija verjetnosti}
+
+Imamo prostor vseh izidov oz. \textbf{vzorčni prostor} $\Omega$. Dogodki so nekatere podmnožice $A \subseteq \Omega$.
+
+\subsubsection{Pravila za računanje z dogodki}
+\begin{align*}
+	\text{idempotentnost} & \quad A \cup A = A = A \cap A \\
+	\text{komutativnost} & \quad A \cup B = B \cup A \\
+	& \quad A \cap B = B \cap A \\
+	\text{asociativnost} & \quad (A \cup B) \cup C = A \cup ( B \cup C) \\
+	& \quad (A \cap B) \cap C = A \cap ( B \cap C) \\
+	\text{distibutivnost} & \quad (A \cup B) \cap C = (A \cap C) \cup ( A \cap C) \\
+	& \quad (A \cap B) \cup C = (A \cap C) \cup ( A \cap C) \\
+	\text{De Morgan} & \quad \big(\bigcup_{i\in I} A_i \big)^\complement = \bigcap_{i \in I} A_i^\complement  \\
+	& \quad \big(\bigcap_{i\in I} A_i \big)^\complement = \bigcup_{i \in I} A_i^\complement
+\end{align*}
+
+Neprazna družina dogodkov $\mathcal{F}$ v $\Omega$ je $\sigma$-algebra, če velja
+\begin{itemize}
+	\item zaprtost za komplemente: \[ A \in \mathcal{F} \implies A^\complement \in \mathcal{F} \]
+	\item zaprtost za števne unije: \[ A_1, A_2, \dots \in \mathcal{F} \implies \bigcup_{i=1}^\infty A_i \in \mathcal{F} \]
+\end{itemize}
+\textit{Če zahtevamo zaprtost le za končne unije, je $\mathcal{F}$ le algebra.}
+
+Ker je po De Morganovem zakonu $\big(\bigcup_{i\in I} A_i^\complement \big)^\complement = \bigcap_{i \in I} A_i$ imamo zaprtost tudi za preseke.
+
+Ker je $A \setminus B = A \cap B^\complement$ je algebra zaprta tudi za razlike.
+
+Najmanjša algebra je \textbf{trivialna}: $ \{ \emptyset, \Omega \}$.
+
+Največja algebra je: $\mathcal{P}(\Omega)$.
+
+Najmanjša algebra, ki vsebuje $E$ je $\{ \emptyset, E, E^\complement, \Omega \}$.
+
+Dogodka $A$ in $B$ sta \textbf{nezdružljiva} (disjunktna), če je $A \cup B = \emptyset$.
+
+Zaporedje $\{ A_i \}_i \in \mathcal{F}$ (končno ali števno mnogo) je \textbf{popoln sistem dogodkov}, če
+\begin{align*}
+	\bigcup_i A_i &= \Omega & A_i \cup A_j &= \emptyset, \, \forall i,j: i\neq j
+\end{align*}
+
+
+\textbf{Verjetnost} na $(\Omega, \mathcal{F})$ je preslikava $P: \mathcal{F} \to \mathbb{R}$ z lastnostmi:
+
+\begin{itemize}
+	\item $P(A) \geq 0$ za $\forall A \in \mathcal{F}$
+	\item $P(\Omega) = 1$
+	\item Za paroma nezdružljive dogodke $\{ A_i \}_{i=1}^\infty $ velja \textit{števna aditivnost}
+	\[ P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)\]
+\end{itemize}
+
+Lastnosti $P$:
+\begin{itemize}
+	\item $P(\emptyset) = 0$
+	\item $P$ je končno aditivna.
+	\item $P$ je \textit{monotona}: $A \subseteq B \implies P(A) \leq P(B)$
+	\item $P(A^\complement) = 1 - P(A)$
+	\item $P$ je \textit{zvezna}:
+	\[ A_1 \subseteq A_2 \subseteq \dots \implies P\big(\bigcup_{i=1}^\infty\big) = \lim_{i \to \infty} P(A_i)\]
+	\[ B_1 \supseteq B_2 \supseteq \dots \implies P\big(\bigcap_{i=1}^\infty\big) = \lim_{i \to \infty} P(B_i)\]
+\end{itemize}
+
+\section{Verjetnostni prostor}
+je trojček $(\Omega, \mathcal{F}, P)$, kjer je $\Omega$ množica vseh izidov, $\mathcal{F}$ $\sigma$-algebra in $P$ preslikava verjetnosti.
+
+
+Najmanjša algebra $\mathcal{F}$ na $\mathbb{N}$, ki vsebuje $ \{1\}, \{2\}, \dots$, je algebra \[g = \{ A \subseteq \mathbb{N} : \text{$A$ končna ali $A^\complement$ neskončna} \} \]
+
+\section{Pogojna verjetnost}
+\[ P(A | B) = \frac{P(A \cap B)}{P(B)}\]
+
+
+\end{multicols}
+
+\end{document}

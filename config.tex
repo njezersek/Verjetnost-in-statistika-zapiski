@@ -1,0 +1,87 @@
+\documentclass[a4paper,8pt]{extarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage{fancyhdr}
+
+\usepackage[pdftex]{graphicx} % Required for including pictures
+\usepackage[pdftex,linkcolor=black,pdfborder={0 0 0}]{hyperref} % Format links for pdf
+\usepackage{calc} % To reset the counter in the document after title page
+\usepackage{enumitem} % Includes lists
+
+\usepackage{textcomp}
+\usepackage{eurosym}
+
+\usepackage{ dsfont } % font za množice
+% tabele
+\usepackage{array}
+\usepackage{wrapfig}
+
+\usepackage{tikz,forest}
+\usetikzlibrary{arrows.meta}
+
+\frenchspacing % No double spacing between sentences
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+
+\usepackage{mathtools}
+\usepackage{blkarray, bigstrut} %
+
+
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{tabularx}
+\usepackage[landscape]{geometry}
+\usepackage{listings}
+\usepackage{inconsolata}
+%\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+%\usepackage{accents}
+
+\newcommand{\vect}[1]{\accentset{\rightharpoonup}{#1}}
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{0}
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0pt plus 0.5ex}
+
+% listings okolje za psevdo kodo
+\lstnewenvironment{koda}[1][] %defines the algorithm listing environment
+{   
+    \lstset{ %this is the stype
+        mathescape=true,
+        basicstyle=\scriptsize, 
+		columns=flexible,
+        keywordstyle=\bfseries\em,
+        keywords={,vhod, izhod, zacetek, konec, koncamo, ponavljaj, dokler, ce, vrni, za, vsak, vse, v, sicer,} %add the keywords you want, or load a language as Rubens explains in his comment above.
+        xleftmargin=.1\textwidth,
+		tabsize=4,
+		%frame=leftline,xleftmargin=5pt,xrightmargin=5pt,framesep=5pt,
+		%inputencoding = utf8,
+		extendedchars = true,
+		literate={ž}{{\ˇz}}1 {š}{{\ˇs}}1 {č}{{\ˇc}}1 {Ž}{{\ˇZ}}1 {Š}{{\ˇS}}1 {Č}{{\ˇC}}1,
+        #1 % this is to add specific settings to an usage of this environment (for instnce, the caption and referable label)
+    }
+}
+{}
+% -----------------------------------------------------------------------
