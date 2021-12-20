@@ -7,7 +7,55 @@
 \setlength{\multicolsep}{1pt}
 \setlength{\columnsep}{2pt}
 
+\section{Odvodi}
+\setlength{\tabcolsep}{0.5em}{\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ | r | l | }
+    \hline
+    \emph{funkcija} & \emph{odvod}\\\hline
+    $c$ & $0$ \\ \hline
+    $x^n$ & $nx^{n-1}$ \\ \hline
+    $a^x$ & $a^x\ln{a}$ \\\hline
+    $\frac{a^x}{\ln a}$ & $a^x$\\\hline
+    $x^x$ & $x^x(1+\ln{x})$ \\\hline
+    $\ln(x)$ & $\frac{1}{x}$ \\\hline
+    $\log_{a}(x)$ & $\frac{1}{x\ln(a)}$ \\\hline
+    $\sin(x)$ & $cos(x)$ \\\hline
+    $\cos(x)$ & $-sin(x)$ \\\hline
+    $\tan(x)$ & $\frac{1}{cos^2(x)}$ \\\hline
+    $\cot(x)$ & $-\frac{1}{sin^2(x)}$ \\\hline
+    $\arcsin(x)$ & $\frac{1}{\sqrt{1-x^2}}$ \\\hline
+    $\arccos(x)$ & $-\frac{1}{\sqrt{1-x^2}}$ \\\hline
+    $\arctan(x)$ & $\frac{1}{1+x^2}$ \\\hline
+    $\textrm{arccot}(x)$ & $-\frac{1}{1+x^2}$ \\\hline
+    $\textrm{sh}(x) = \frac{e^x - e^{-x}}{2}$ & $\textrm{ch}(x)$\\\hline
+    $\textrm{ch}(x) = \frac{e^x + e^{-x}}{2}$ & $\textrm{sh}(x)$\\\hline
+    $\textrm{th}(x) = \frac{\textrm{sh}(x)}{\textrm{ch}(x)}$ & $\frac{1}{\textrm{ch}^2(x)}$\\\hline
+    $\textrm{cth}(x) = \frac{1}{\textrm{th}(x)}$ & $-\frac{1}{\textrm{sh}^2(x)}$\\\hline
+    $\textrm{arsh}(x) = \ln(x+\sqrt{x^2+1})$ & $\frac{1}{\sqrt{1+x^2}}$\\\hline
+    $\textrm{arch}(x) = \ln(x+\sqrt{x^2-1})$ & $\frac{1}{\sqrt{1-x^2}}$\\\hline
+    $\textrm{arth}(x) = \frac{1}{2}\ln{\frac{1+x}{1-x}}$ & $\frac{1}{(1+x)(1-x)}$\\\hline
+\end{tabular}
+}
+
 \section{Osnove kombinatorike}
+\subsection*{Rodovne funkcije}
+\[
+	\begin{aligned}
+		\sum_{n=0}^{\infty} q^n &= \frac{1}{1-q} &
+		\sum_{n=0}^{b} q^n &= \frac{1-q^{b+1}}{1-q}
+		\\
+		\sum_{n=a}^{\infty} q^n &= \frac{q^{a}}{1-q} &
+		\sum_{n=a}^{b} q^n &= \frac{q^a-q^{b+1}}{1-q}
+	\end{aligned}
+\]
+\[
+	a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + ... + ab^{n-2} + b^{n-1})  
+\]
+\[ \textstyle \frac{a_0 + ... + a_{k-1}x^{k-1}}{1-x^k} = a_0 + ... + a_{k-1}x^{k-1} + a_0^k + ... + a_{k-1}x^{2k-1} + ...\]
+\[ (x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k}y^{k} \]
+\[ \frac{1}{(1-x)^n} = \sum_{k=0}^{n} \binom{n+k-1}{k} x^{k} \]
+\[ B_\lambda(x) = \sum_{n} \binom{\lambda}{n} x^{n} = (1+x)^\lambda; \qquad \binom{\lambda}{n} = \frac{\lambda^{\underline{n}}}{n!}\]
+
 \subsection*{Izbori}
 Imamo $n$ oštevilčenih kroglic. Na koliko načinov lahko izberemo $k$ kroglic?
 
@@ -23,30 +71,7 @@ Imamo $n$ oštevilčenih kroglic. Na koliko načinov lahko izberemo $k$ kroglic?
 
 \[\binom{n}{k} = \frac{n^{\underline{k}}}{k!} = \frac{n!}{k!(n-k)!} = \binom{n}{n-k}\]
 
-\section{Elementarna verjetnost}
-\begin{align*}
-	n \quad & \dots \quad \text{št. ponovitev poskusa} \\
-	A \quad & \dots \quad \text{dogodek} \\
-	k_n(A) \quad & \dots \quad \text{frekvenca dogodka}
-\end{align*}
 
-\textbf{Relativna frekvenca} dogodka $A$:
-\[ f_n(A) = \frac{k_n(A)}{n} \]
-
-\subsection{Statistična definicija verjetnosti}
-\[ P(A) = \lim_{n \to \infty} f_n(A) \]
-
-\subsection{Klasična definicija verjetnosti}
-pri poguju, da so vsi izidi enako verjetni
-
-\[ P(A) = \frac{\text{\# izidov }A}{\text{\# vseh izidov}}\]
-
-\subsection{Geometirjska definicija verjetnosti}
-če je število izidov neskončno, pogledamo razmerje ploščine vseh dogodkov in ugodnih dogodkov.
-
-\subsection{Aksiomatična definicija verjetnosti}
-
-Imamo prostor vseh izidov oz. \textbf{vzorčni prostor} $\Omega$. Dogodki so nekatere podmnožice $A \subseteq \Omega$.
 
 \subsubsection{Pravila za računanje z dogodki}
 \begin{align*}
@@ -122,12 +147,6 @@ Lastnosti $P$:
 \end{align*}
 \[ P( \bigcup_{i=1}^n A_i) = \sum_{\emptyset \neq S \subseteq [n]} (-1)^{|S|+1} P(\bigcap_{i\in S} A_i)\]
 
-\section{Verjetnostni prostor}
-je trojček $(\Omega, \mathcal{F}, P)$, kjer je $\Omega$ množica vseh izidov, $\mathcal{F}$ $\sigma$-algebra in $P$ preslikava verjetnosti.
-
-
-Najmanjša algebra $\mathcal{F}$ na $\mathbb{N}$, ki vsebuje $ \{1\}, \{2\}, \dots$, je algebra \[g = \{ A \subseteq \mathbb{N} : \text{$A$ končna ali $A^\complement$ neskončna} \} \]
-
 \subsection{Pogojna verjetnost}
 \[ P(A | B) = \frac{P(A \cap B)}{P(B)}\]
 
@@ -153,12 +172,6 @@ Dogodka A in B sta \textbf{neodvisna}, če velja:
 Če je $0 < P(B) < 1$, pa je to ekvivalentno tudi pogoju, da je $P(A | B) = P(A | B^\complement)$.
 Dogodki $A1, A2, A3, \dots$ so neodvisni, če za poljubne različne indekse $i_1, i_2, \dots , i_k$ velja:
 \[ P(A_{i_1} \cap A_{i_2} \cap \dots \cap A_{i_k}) = P(A_{i_1}) P(A_{i_2}) \dots P(A_{i_k}) \]
-
-\subsection{Neodvisnot izpeljanih dogodkov *}
-Naj bo $\mathcal{F}$ družina dogodkov. S $\sigma(\mathcal{F})$ označimo najmanjšo $\sigma$-algebro, ki vsebuje
-$\mathcal{F}$, tj. družino vseh dogodkov, ki jih dobimo iz dogodkov iz $\mathcal{F}$ s števnimi unijami
-in komplementi.
-Naj bodo $A_{i,j}$ neodvisni dogodki. Tedaj so tudi poljubni dogodki $B_1 \in \sigma(A_{11}, A_{12}, \dots), B_2 \in \sigma(A_21, A22, . . .), B_3 \in \sigma(A_{31}, A_{32}, \dots), \dots$ neodvisni.
 
 \section{Slučajne spremenljivke}
 Slučajna spremenljivka je funkcija $X: \Omega \to \mathbb{R}$ z lastnostijo, da je $\forall x \in \mathbb{R}$ množica $\{ \omega \in \Omega : X(\omega) < x \} \equiv X^{-1}((-\infty, x]) \equiv (X \leq x)$ dogodek.
@@ -272,10 +285,18 @@ Standardizirana normalna porazdelitev: $N(0, 1)$
 	0 & x < 0
 \end{cases}\]
 
+Funkcija $\Gamma$
+\begin{gather*}
+	\Gamma(s) = \int_0^{\infty} x^{s-1} e^{-x} dx, \qquad \forall s > 0 \\
+	\Gamma(1) = 1 \qquad \Gamma(s+1) = s \Gamma(s) \qquad \Gamma(\frac{1}{2}) = \sqrt{\pi} \\
+	\Gamma(n+1) = n!\qquad n\in \mathbb{N} \\ 
+	\Gamma(x)\Gamma(x+1) = \frac{\pi}{\sin(\pi x)} 
+\end{gather*}
+
 \textbf{Porazdelitev} $\chi^2(n)$ \\
 $n \in \mathbb{N}$ je št. prostorskih stopenj
 
-\[ \chi^2(n) = \Gamma(\frac{n}{2}), \frac{1}{2})\]
+\[ \chi^2(n) = \Gamma(\frac{n}{2}, \frac{1}{2})\]
 
 \textbf{Cauchyjeva porazdelitev}
 \[ p(x) = \frac{1}{\pi (1+x^2)}\]
@@ -293,7 +314,7 @@ Slučajne spremenljivke so neodvisne, če je
 Torej so dogodki $(X_1 \leq x_1), \dots , (X_n \leq x_n)$ neodvisni.
 
 Naj bo $(X, Y)$ diskretno porazdeljen sluč. vektor:
-\[ p_{ij} = P(X \leq x_i, Y \leq y_j) \quad p_i = P(X \leq x_i) \quad P(Y \leq y_j) \]
+\[ p_{ij} = P(X = x_i, Y = y_j) \quad p_i = P(X = x_i) \quad P(Y = y_j) \]
 potem velja:
 \[ X, Y \text{neodvisni} \iff p_{ij} = p_i q_j \]
 
