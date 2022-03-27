@@ -533,6 +533,25 @@ Naj bo $S = X_1 +  \dots + X_n$. Potem je:
 
 Velja tudi $E(S) = E(N)E(X)$.
 
+\subsection{Znane rodovne funkcije}
+\[
+    \begin{aligned}
+        \sum_{n=0}^{\infty} q^n &= \frac{1}{1-q} &
+        \sum_{n=0}^{b} q^n &= \frac{1-q^{b+1}}{1-q}
+        \\
+        \sum_{n=a}^{\infty} q^n &= \frac{q^{a}}{1-q} &
+        \sum_{n=a}^{b} q^n &= \frac{q^a-q^{b+1}}{1-q}
+    \end{aligned}
+\]
+\[
+    a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + ... + ab^{n-2} + b^{n-1})  
+\]
+\[ \textstyle \frac{a_0 + ... + a_{k-1}x^{k-1}}{1-x^k} = a_0 + ... + a_{k-1}x^{k-1} + a_0^k + ... + a_{k-1}x^{2k-1} + ...\]
+\[ (x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k}y^{k} \]
+\[ \frac{1}{(1-x)^n} = \sum_{k=0}^{n} \binom{n+k-1}{k} x^{k} \]
+\[ B_\lambda(x) = \sum_{n} \binom{\lambda}{n} x^{n} = (1+x)^\lambda; \qquad \binom{\lambda}{n} = \frac{\lambda^{\underline{n}}}{n!}\]
+
+
 \section{Momentno rodovna funkcija}
 \begin{align*}
 	M_X(t) &= E(e^{tX}) \qquad \forall t \in R \quad \textit{če obstaja} \\
