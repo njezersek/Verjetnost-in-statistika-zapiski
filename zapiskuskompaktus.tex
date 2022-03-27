@@ -1,7 +1,7 @@
 \input{config.tex}
 \begin{document} 
 
-\begin{multicols}{4}
+\begin{multicols}{5}
 \setlength{\premulticols}{1pt}
 \setlength{\postmulticols}{1pt}
 \setlength{\multicolsep}{1pt}
@@ -339,6 +339,291 @@ Tedaj je slučajna spremenljivka $Y = h(X)$ porazdeljena zvezno z gostoto:
 \[ p_Y = \sum_{\substack{x \in A \\ h(x) = y}} \frac{p_X(x)}{|h'(x)|}\]
 
 
-\end{multicols}
+\subsection{Matematično upanje}
+Diskretno porazdeljena sl. sprem. \\
+$ X \sim \left( \begin{matrix}
+	x_1 & x_2 & \dots \\
+	p_1 & p_2 & \dots
+\end{matrix}\right) $
 
+\[ E(X) = \sum_{k=1}^\infty x_k p_k \quad \text{če} \quad \sum_{k=1}^\infty |x_k| p_k < \infty \]
+
+Zvezno porazdeljena sl. sprem. $X$ z gostoto $p_X$
+\[E(X) = \int_{-\infty}^{\infty} x p_X(x) dx \quad \text{če} \quad \int_{-\infty}^{\infty} |x| p_X(x) dx  < \infty\]
+
+\subsubsection{Lastnosti}
+Naj bo $f: \mathbb{R} \to \mathbb{R}$ zvezna funkcija. Potem je
+\[ E(f(X)) = \sum_{k=1}^\infty f(x_k) p_k \quad \text{če obstaja}\]
+\[ E(f(X)) = \int_{-\infty}^\infty f(x) p_X(x) dx \quad \text{če obstaja}\]
+
+Če ima $|X|$ mat. up., ga ima tudi $X$ in velja 
+\[|E(X)| \leq E(|X|) \]
+
+Če obstaja $E(X^2)$ in $E(Y^2)$, obstaja tudi $E(XY)$ in velja:
+\[|E(XY)| \leq E(|XY|) \leq \sqrt{E(X^2)E(Y^2)} \]
+
+Za poljubne sl. sprem $X_1, \dots, X_n$ velja:
+\[ E(a_1 X_1 + \dots a_n X_n) = a_1 E(X_1) + \dots + a_n E(X_n) \]
+
+\subsection{Disperzija (varianca)}
+\[D(X) = E((X - E(X))^2) = E(X^2) - (E(X))^2\]
+Lastnosti: 
+\begin{itemize}
+	\item $D(X) \geq 0$
+	\item $D(X) = 0 \iff P(X = E(X)) = 1$
+	\item $D(aX) = a^2 D(X)$
+\end{itemize}
+
+Standardna diviacija/odklon:
+\[ \sigma(X) = \sqrt{D(X)} \]
+zanjo velja $\sigma (aX) = |a|\sigma(X)$.
+
+
+\subsection{Nekoreliranost}
+Sl. sprem. $X$ in $Y$ sta nekorelirani, če velja:
+\[ E(XY) = E(X)E(Y) \]
+\[ X, Y \text{ neodvisni } \implies X,Y \text{ nekorelirani }\]
+
+Če imata $X$ in $Y$, je nekoreliranost ekvivalentna zvezi:
+\[ D(X+Y) = D(X) + D(Y)\]
+
+\subsection{Kovarianca}
+\begin{align*}
+	K(X,Y) &= E((X-E(X))(Y-E(Y))) \\
+	&= E(XY)-E(X)E(Y)
+\end{align*}
+
+\begin{itemize}
+	\item $K(X,X) = D(X)$
+	\item $K(X,Y) = 0 \iff X,Y \text{nekorelirani}$
+	\item $K(aX,bY, Z) = aK(X, Z) + bK(Y, Z)$
+	\item $K(X,Y) = K(Y,X)$
+	\item $K(aX+b,cY+d) = acK(X,Y)$
+	\item $|K(X,Y)| \leq \sqrt{D(X)D(Y)}$
+	\item $D(X+Y) = D(X) + D(Y) + 2K(X,Y)$ 
+	\item $D(X_1 + \dots + X_n) = D(X_1) + \dots + D(X_n) + 2\sum_{i=1}^{n-1}\sum_{j=i+1}^{n} K(X_i, X_j)$
+\end{itemize}
+
+\subsection{Standardizacija}
+\[X_S = \frac{X-E(X)}{\sigma(X)}\]
+
+\subsection{Korelacijski koeficient}
+\[r(X,Y) = \frac{K(X, Y)}{ \sigma(X) \sigma(Y)} = E(X_S, Y_S)\]
+
+Lastnosti:
+\begin{itemize}
+	\item $r(X,Y) = 0 \iff X, Y \text{nekorelirani}$
+	\item $-1 \leq r(X,Y) \leq 1$
+	\item $r(X,Y) = 1 \iff P(X_S = Y_S) = 1$
+	\item $r(X,Y) = -1 \iff P(X_S = -Y_S) = 1$
+	\item $r(aX+b, cY+d) = r(X, Y)$
+\end{itemize}
+
+\section{Pogojne porazdelitve}
+Pogojna porazdelitev sl. sprem. $X$ glede na dogodek $B$:
+\[ X|B \sim \left( \begin{matrix}
+	a_1 & a_2 &\dots \\
+	P(X = a_1 | B) & P(X = a_2 | B) &\dots 
+\end{matrix}\right)\]
+
+\subsection{Pogojna porazdelitvena funkcija}
+sl. sprem. $X$ glede na dogodek $B$:
+\[ F_{X|B}(x) = F_X(x|B) = P(X \leq x | B) = \frac{P((X\leq x) \cap B)}{P(B)} \]
+
+Če je pogojna porazdelitev zvezna, objstaja tudi \textbf{pogojna porazdelitvena gostota}:
+\[ p_{X|B}(x) = F'_{X|B}(x)\]
+
+\subsection{Pogojno matematično upanje}
+\[ E(h(X) | B) = \sum_x h(x) P(X = x | B)\]
+
+Za vsako slučajno spremenlivko $X$ in dogodek $B$ veleja:
+\[ E(X |B) = \frac{E(XZ)}{P(B)} = \frac{E(XZ)}{E(Z)}\]
+kjer je sl. sprem. $Z$ indikator dogodka $B$.
+
+Za vsako sl. sprem. $X$ z mat. up. in popoln sistem dogodkov $H_1, H_2, \dots$ velja \textbf{izrek o polni pričakovani vrednosti}
+\[E(X) = P(H_1)E(X | H_1) + P(H_2)E(X | H_2)+\dots \]
+
+\subsection{Regresijska funkcija}
+\[ \varphi(y) = E(X | Y = y) \]
+
+Za vsako sl. sprem. $X$ z mat. up. in diskretno sl. sprem. $Y$ velja:
+\[ E(Xg(Y) | Y) = E(X | Y)g(Y) \]
+\[ E(Xg(Y)) = E(E(X | Y)g(Y)) \]
+\[ E(X) = E(E(X|Y))\]
+
+Za vsak dododek $A$ in vsako sl. sprem $Y$ velja:
+\[ E(P(A|Y)) = P(A)\]
+
+
+\section{Momenti}
+Moment reda $k$ glede na točko $a$ je
+\[ m_k(a) = E((X-a)^k) \quad \textit{če obstaja}\]
+
+\begin{itemize}
+	\item \textbf{Začetni moment} $z_k := m_k(0) = E(X^k)$
+	\item \textbf{Centralni moment} $m_k := m_k(E(X)) = E((X-E(x))^k)$
+\end{itemize}
+
+\[ z_1 = E(X) \qquad m_2 = D(X)\]
+
+Če obstaja $m_n(a)$, obstaja tudi $m_k(a)$ za $\forall k < n$.
+
+Če obstaja $z_n$, obstaja tudi $m_n(a)$ za $\forall a \in \mathbb{R}$
+
+Centralne momente lahko izračunamo iz začetnih:
+\[ m_n = \sum_{k=0}^n \binom{n}{k} (-1)^{n-k} z_1^{n-k} z_k \]
+
+\subsection{Asimetrija}
+\[A(X) = E(X_S^3) = E\left( (\frac{X-E(X)}{\sigma(X)})^3 \right) = \frac{m_3}{m_2^{\frac{3}{2}}}\]
+
+$\forall \lambda > 0: A(\lambda X) = A(X)$
+
+\subsection{Sploščenost (kurtozis)}
+\[ K(X) = E\left[ \left( \frac{X-E(X)}{\sqrt{D(X)}}\right)^4\right] = \frac{m_4}{m_2^2}\]
+
+Presežna sploščenost:
+\[ K^*(X) = K(X) - 3\]
+
+\section{Vrstilne karakteristike}
+
+\subsubsection{Kvantil reda $p$}
+je vsaka vrednost $x_p$, za katero velja:
+\[ P(X \leq x_p) \geq p \text{ in } P(X \geq x_p) = 1 - p \]
+oz. $F(x_p-) \leq p \leq F(x_p)$
+
+\begin{itemize}
+	\item Mediana: $x_{\frac{1}{2}}$
+	\item Kvartili: $x_{\frac{1}{4}}, x_{\frac{2}{4}}, x_{\frac{3}{4}}$
+	\item (Per)centili: $x_{\frac{1}{100}}, \dots, x_{\frac{99}{100}}$
+\end{itemize}
+
+\subsection{Semi interkvartilni razmik}
+\[ s = \frac{1}{2}\left(x_{\frac{3}{4}} - x_{\frac{1}{4}} \right)\]
+
+\section{Rodovne funkcije}
+Naj bo $X$ sl. sprem. z zalogo vrednosti $\mathbb{N} \cup \{0\}$: 
+\[ p_k = P(X=k) \qquad k = 0,1,2,\dots \]
+
+Rodovna funkcija sl. sprem. $X$:
+\[G_X(s) = p_0 + p_1 s + p_2 s^2 + \dots = \sum_{k=0}^\infty p_k s^k \]
+Obstaja za vse $|s| \leq 1$.
+
+\[ P(X=k) = \frac{G_X^{(k)(0)}}{k!} \]
+
+\[ G_X(0) = p_0 \quad G_X(1) = 1 \quad G_X(s) = E(s^X) \]
+
+Izrek o enoličnosti:
+\begin{multline*}
+\forall s \in [-1, 1]: G_X(s) = G_Y(s) \\
+\iff P(X=k) = P(Y=k)\ \forall k = 0, 1, 2, \dots
+\end{multline*}
+
+\[ \lim_{s \uparrow 1} G'_X(s) = \lim_{s \uparrow 1} \sum_{k=1}^\infty k p_k s^{k-1} =  \sum_{k=1}^\infty  \lim_{s \uparrow 1} k p_k s^{k-1}  E(X)\]
+
+Naj bo $X$ sl. sprem. z rodovno funkcijo $G_X$, potem je:
+\[ G_X^{(n)}(1-) = E(X)(X-1)(X-2)\dots (X-n+1))\]
+
+Naj bosta $X_1, \dots , X_n$ nedovisne sl. sprem. z rodovnimi funkcijami $G_{X_1}, \dots G_{X_n}$:
+\[ G_{X_1+\dots + X_n} = G(X_1) \dots G(X_n) \qquad \forall s \in [-1, 1]\]
+
+
+Naj bodo $\forall n \in \mathbb{N}$ sl. sprem $N, X_1, \dots, X_n$ neodvisne. Naj ima $N$ rodovno funkcijo $G_N$ in $X_i$ rodovno funkcijo $G_X$ ($X_1, \dots, X_n$ so enako porazdeljene).
+Naj bo $S = X_1 +  \dots + X_n$. Potem je:
+\[ G_S = G_N(G_X(s)) \qquad \forall s \in [-1, 1]\]
+
+Velja tudi $E(S) = E(N)E(X)$.
+
+\section{Momentno rodovna funkcija}
+\begin{align*}
+	M_X(t) &= E(e^{tX}) \qquad \forall t \in R \quad \textit{če obstaja} \\
+	&= 1 + z_1t + \frac{z_2}{2!} t^2 + \frac{z_3}{3!} t^3 + \dots 
+\end{align*} 
+
+V primeru, ko ima $X$ zalogo vrednosti v $\mathbb{N} \cup \{0\}$, je 
+\[M_X(t) = E(e^{tX}) = G_X(e^t) \]
+
+Za zvezno porazdeljeno sl. sprem. $X$ velja:
+\[ M_X(t) = \int_{-\infty}^\infty e^{tx} p_X(x) dx \]
+
+
+Naj pri nekem $\delta > 0$ $M_X(t)$ obstaja za vse $t \in (-\delta, \delta)$.
+Potem je porazdelitev za $X$ natanko določana z $M_X$ in vsi začetni momenti obstajajo:
+\[ z_k = E(X^k) = M_X^{(k)}(0) \qquad \forall k \in \mathbb{N}\]
+\[ M_X(t) = \sum_{k=0}^\infty \frac{z_k}{k!}t^k \qquad \forall t \in (-\delta, \delta)\] 
+
+Trditev:
+\[M_{aX+b}(t) = e^{bt} M_X(at) \]
+
+Če sta $X$ in $Y$ neodvisni, je:
+\[ M_{X+Y} (t) = M_X(t) M_Y(t)\]
+
+\section{Izreka o velikih številih}
+
+Zaporedje sl. sprem. $\left\{X_n\right\}_{n\in \mathbb{N}}$ \textbf{verjetnostno} konvergira proti sl. sprem. $X$, če
+\[\forall \varepsilon > 0: \lim_{n \to \infty} P(|X_n - X| \geq \varepsilon) = 0\]
+\[\forall \varepsilon > 0: \lim_{n \to \infty} P(|X_n - X| \leq \varepsilon) = 1\]
+Zaporedje sl. sprem. $\left\{X_n\right\}_{n\in \mathbb{N}}$ \textbf{skoraj gotovo} (s.g.) konvergira proti sl. sprem. $X$, če
+\[ P(\lim_{n \to \infty}) = 1 \]
+
+Če $X_n \xrightarrow[n \to \infty]{s.g.} X$, potem
+\[\forall \varepsilon > 0: \lim_{m \to \infty} P(|X_n - X| < \varepsilon, \forall n \geq m) = 1\]
+
+Če $X_n \xrightarrow[n \to \infty]{s.g.} X$, potem $X_n \xrightarrow[n \to \infty]{ver.} X$
+
+
+Naj bo $X_1, X_2, X_n, \dots$ zaporedje sl. sprem. z mat. up. in naj bo $S = X_1 +\dots + X_n$, $Y_n = \frac{S_n - E(S_n)}{n}$. Potem je $E(Y_n) = 0$.
+
+Za $\left\{ X_n \right\}_{n \in \mathbb{N}} $ velja \textbf{šibki zakon o velikih številih}, če zap. $\left\{ Y_n \right\}_{n \in \mathbb{N}}$
+konvergira proti 0 verjetnostno, tj.
+\[ \forall \varepsilon > 0: \lim_{n \to \infty} P\left(  \frac{|S_n - E(S_n)|}{n} < \varepsilon \right) = 1 \]
+
+Za $\left\{ X_n \right\}_{n \in \mathbb{N}} $ velja \textbf{krepki zakon o velikih številih}, če zap. $\left\{ Y_n \right\}_{n \in \mathbb{N}}$
+konvergira proti 0 skoraj gotovo, tj.
+\[ P\left( \lim_{n \to \infty} \frac{S_n - E(S_n)}{n} = 0 \right) = 1 \]
+
+\subsection{Neenakost Markova}
+Če je $X$ sl. sprem. z mat. up., potem je
+\[P(|X| \geq a) \leq \frac{E(|X|)}{a} \quad \forall a > 0\]
+
+\subsection{Neenakost Čebiševa}
+Če ima $X$ disperzijo, je
+\[ P(|X - E(X)| \geq a \sigma(X)) \leq \frac{1}{a^2}  \quad \forall a > 0\]
+oziroma za $\varepsilon := a \sigma(X)$
+\[ P(|X-E(X)| \geq \varepsilon) \leq \frac{D(X)}{\varepsilon^2}\]
+
+\textit{Izrek Markova:}
+Če za sl. sprem. $\left\{ X_n \right\}_{n \in \mathbb{N}} $ velja $\frac{D(S_n)}{n^2} \xrightarrow[n \to \infty]{} 0$, potem velja ŠZVŠ.
+
+\textit{Izrek Čibiševa:}
+Če so sl. sprem. $ X_1, X_2, \dots $ paroma nekorelirane in je $\sup_{n \in \mathbb{N}} D(X_n) < \infty$, potem velja ŠZVŠ.
+
+\textit{Izrek Kolmogorova}
+Naj za neodvisne slučajne spremenljivke $X_1, X_2, \dots$ velja pogoj
+\[ \sum_{n=1}^\infty \frac{D(X_n)}{n^2} < \infty\]
+potem za  $\left\{ X_n \right\}_{n \in \mathbb{N}} $ velja KZVŠ.
+
+Zgornji pogoj velja, če je $\sup_n D(X_n) < \infty$
+
+Naj bodo  $X_1, X_2, \dots$ neodvisne in enako porazdeljene sl. sprem. z disperzijo. Potem velja KZVŠ.
+
+\section{Centralni limitni izrek}
+Naj bo $X_1, X_2, X_n, \dots$ zaporedje sl. sprem. z mat. up. in naj bo $S = X_1 +\dots + X_n$, $Z_n = \frac{S_n - E(S_n)}{n}$. Potem je $E(Z_n) = 0$ in $D(Z_n) = 1$.
+
+Za $\left\{ X_n \right\}_{n \in \mathbb{N}} $ veljaj \textbf{centralni limitni zakon}, če
+\[ F_{Z_n}(x) \xrightarrow[n \to \infty]{} F_{N(0,1)}  \quad \forall x \in \mathbb{R}\]
+
+Če so $X_1, X_2, \dots$ neodvisne in enako porazdeljene, velja centralni limitni zakon.
+\textit{Za velike $n$ je $S_n \sim N(E(S_n), \sigma(S_n))$}
+
+\[ P\left(\frac{S_n - E(S_n)}{\sigma(S_n)} \leq x \right) \xrightarrow[n \to \infty]{} \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} e^{\frac{t^2}{2}} dt\]
+\[ P(a \leq S_n \leq b) \approx \Phi\left(\frac{b-E(S_n)}{\sigma(S_n)}\right) - \Phi\left(\frac{a-E(S_n)}{\sigma(S_n)}\right)  \]
+
+
+\subsubsection{Izrek o zveznosti rodovne funkcije}
+
+Naj za zaporedje $\left\{ Z_n \right\}_{n \in \mathbb{N}} $ sl. sprem. velja
+\[ M_{Z_n}(t) \to M_{N(0,1)}(t) = e^{\frac{t^2}{2}} \qquad \forall t \in (-\delta, \delta)\]
+potem
+\[ F_{Z_n}(x) \to F_{N(0,1)}(x)  \qquad \forall x \in \mathbb{R}\]
+\end{multicols}
 \end{document}
