@@ -650,5 +650,26 @@ Naj za zaporedje $\left\{ Z_n \right\}_{n \in \mathbb{N}} $ sl. sprem. velja
 \[ M_{Z_n}(t) \to M_{N(0,1)}(t) = e^{\frac{t^2}{2}} \qquad \forall t \in (-\delta, \delta)\]
 potem
 \[ F_{Z_n}(x) \to F_{N(0,1)}(x)  \qquad \forall x \in \mathbb{R}\]
+
+
+\subsection*{Funkcija $\Gamma$}
+\begin{itemize}
+    \item $ \Gamma(s) = \int_0^{\infty} x^{s-1} e^{-x} dx, \qquad \forall s > 0 $
+    \item $\Gamma(1) = 1$
+    \item $\Gamma(s+1) = s \Gamma(s)$
+    \item $\Gamma(\frac{1}{2}) = \sqrt{\pi}$
+    \item $\Gamma(n+1) = n!\qquad n\in \mathbb{N}$
+    \item $\Gamma(x)\Gamma(x+1) = \frac{\pi}{\sin(\pi x)}$
+\end{itemize}
+
+\subsection*{Funkcija $B$}
+\begin{itemize}
+    \item $B(p,q) = \int_0^1 x^{p-1} (1-x)^{q-1} dx, \qquad \forall p,q > 0$
+    \item $\displaystyle B(p,q) = \int_0^{\infty} \frac{u^{p-1}}{(1+u)^{p+q}}du $
+    \item $\displaystyle B(p,q) = \frac{\Gamma(p) \Gamma(q)}{\Gamma(p+q)}$
+    \item $\frac{1}{2} B(p,q) = \displaystyle \int_0^{\frac{\pi}{2}} (\sin x)^{2p-1} (\cos x)^{2q-1}$
+    \item simetričnost: $B(p,q) = B(q,p)$
+\end{itemize}
+
 \end{multicols}
 \end{document}
