@@ -338,6 +338,22 @@ Tedaj je slučajna spremenljivka $Y = h(X)$ porazdeljena zvezno z gostoto:
 
 \[ p_Y = \sum_{\substack{x \in A \\ h(x) = y}} \frac{p_X(x)}{|h'(x)|}\]
 
+Naj bosta $A, B \in \mathbb{R}^n$ odprti množici; $h: A \to B$ taka bijekcija, da je $h^{-1}$ parcialno zvezno odvedlijva; $X$ sl. vek. porazdeljen zvezno z gostoto $p_X$.
+Tedaj je $Y = h(X)$ porazdeljen:
+
+\[ p_Y(y) = \begin{cases}
+	p_X(h^{-1}(y) |\det J(h^{-1}(y))|) & y \in B \\
+	0 & \text{sicer}
+\end{cases}\]
+
+\[
+    J_g = \begin{bmatrix}
+        \frac{\partial h_1}{\partial x_1} & \dots & \frac{\partial h_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial h_n}{\partial x_1} & \dots & \frac{\partial h_n}{\partial x_n} \\
+    \end{bmatrix}
+\]
+
 
 \subsection{Matematično upanje}
 Diskretno porazdeljena sl. sprem. \\
@@ -347,15 +363,17 @@ $ X \sim \left( \begin{matrix}
 \end{matrix}\right) $
 
 \[ E(X) = \sum_{k=1}^\infty x_k p_k \quad \text{če} \quad \sum_{k=1}^\infty |x_k| p_k < \infty \]
+\[ E(h(X)) = \sum_{k=1}^\infty h(x_k) p_k \]
+\[ E(h(X,Y)) = \sum_{i=1}^\infty \sum_{j=1}^\infty h(x_i, y_j) P(X=x_i, Y=y_j) \]
 
 Zvezno porazdeljena sl. sprem. $X$ z gostoto $p_X$
 \[E(X) = \int_{-\infty}^{\infty} x p_X(x) dx \quad \text{če} \quad \int_{-\infty}^{\infty} |x| p_X(x) dx  < \infty\]
+\[E(h(X)) = \int_{-\infty}^{\infty} h(x) p_X(x) dx\]
+\[E(h(X, Y)) = \int_{-\infty}^\infty \int_{-\infty}^\infty h(x, y) p_{X,Y}(x, y) dx dy\]
+
+Za neko zvezno funkcijo $h$.
 
 \subsubsection{Lastnosti}
-Naj bo $f: \mathbb{R} \to \mathbb{R}$ zvezna funkcija. Potem je
-\[ E(f(X)) = \sum_{k=1}^\infty f(x_k) p_k \quad \text{če obstaja}\]
-\[ E(f(X)) = \int_{-\infty}^\infty f(x) p_X(x) dx \quad \text{če obstaja}\]
-
 Če ima $|X|$ mat. up., ga ima tudi $X$ in velja 
 \[|E(X)| \leq E(|X|) \]
 
@@ -364,6 +382,16 @@ Naj bo $f: \mathbb{R} \to \mathbb{R}$ zvezna funkcija. Potem je
 
 Za poljubne sl. sprem $X_1, \dots, X_n$ velja:
 \[ E(a_1 X_1 + \dots a_n X_n) = a_1 E(X_1) + \dots + a_n E(X_n) \]
+
+\subsection{Indikator dogodka}
+Indikator dogodka $A$ je sl. sprem.:
+\begin{align*}
+	1_A &= \begin{cases}
+		1 & A \text{se zgodi} \\
+		0 & A \text{se ne zgodi} \\
+	\end{cases} &
+	E(1_A) &= P(A)
+\end{align*}
 
 \subsection{Disperzija (varianca)}
 \[D(X) = E((X - E(X))^2) = E(X^2) - (E(X))^2\]
@@ -438,7 +466,13 @@ sl. sprem. $X$ glede na dogodek $B$:
 
 \subsection{Pogojno matematično upanje}
 \[ E(h(X) | B) = \sum_x h(x) P(X = x | B)\]
-\[ E(X|Y=y) = \frac{1}{p_Y(y)} \int_{-\infty}^\infty x p_{(X,Y)(x,y)} dx\]
+\begin{align*}
+	E(X|Y=y) &= \int_{-\infty}^\infty x p_{(X|Y)(x|y)} dx \\
+	&= \frac{1}{p_Y(y)} \int_{-\infty}^\infty x p_{(X,Y)(x,y)} dx
+\end{align*}
+\[ E(h(X,Y) |Y=y) = E(h(X,y) | Y=y ) \]
+\[ E(h(X,Y) | Y) = \sum_x h(x,Y) P(X=x |Y)\]
+\[ E(h(X,Y) | Y) = \int_{-\infty}^{\infty} h(x,Y) P_{X|Y}(x|Y) dx \]
 
 Za vsako slučajno spremenlivko $X$ in dogodek $B$ veleja:
 \[ E(X |B) = \frac{E(XZ)}{P(B)} = \frac{E(XZ)}{E(Z)}\]
@@ -466,6 +500,7 @@ Moment reda $k$ glede na točko $a$ je
 \begin{itemize}
 	\item \textbf{Začetni moment} $z_k := m_k(0) = E(X^k)$
 	\item \textbf{Centralni moment} $m_k := m_k(E(X)) = E((X-E(x))^k)$
+	\item \textbf{Faktorski moment} reda $r$: $E(X(X-1)\dots (X-r+1)) = G_X^{(r)}(1)$
 \end{itemize}
 
 \[ z_1 = E(X) \qquad m_2 = D(X)\]
