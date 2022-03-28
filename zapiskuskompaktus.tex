@@ -433,8 +433,12 @@ sl. sprem. $X$ glede na dogodek $B$:
 Če je pogojna porazdelitev zvezna, objstaja tudi \textbf{pogojna porazdelitvena gostota}:
 \[ p_{X|B}(x) = F'_{X|B}(x)\]
 
+\subsection{Pogojna gostota}
+\[p_X(x|Y=y) \equiv p_X(x|y) = \frac{p_{(X,Y)}(x,y)}{p_Y(y)}\]
+
 \subsection{Pogojno matematično upanje}
 \[ E(h(X) | B) = \sum_x h(x) P(X = x | B)\]
+\[ E(X|Y=y) = \frac{1}{p_Y(y)} \int_{-\infty}^\infty x p_{(X,Y)(x,y)} dx\]
 
 Za vsako slučajno spremenlivko $X$ in dogodek $B$ veleja:
 \[ E(X |B) = \frac{E(XZ)}{P(B)} = \frac{E(XZ)}{E(Z)}\]
@@ -532,6 +536,8 @@ Naj bo $S = X_1 +  \dots + X_n$. Potem je:
 \[ G_S = G_N(G_X(s)) \qquad \forall s \in [-1, 1]\]
 
 Velja tudi $E(S) = E(N)E(X)$.
+
+\[ G_{2X}(s) = G_X(s^2)\]
 
 \subsection{Znane rodovne funkcije}
 \[
