@@ -246,62 +246,6 @@ Komulativna funkcija slučajne spremenljivke $X$
 
 Če je $F_X$ zvezna in odsekoma zvezno odvedljiva, je $X$ porazdeljena zvezno in za vse razen za končno mnogo točk $x$ velja $p_x(x) = F'_X(x)$.
 
-\subsection{Zvezne porazdelitve}
-\textbf{Enakomerna zvezna porazdelitev} na $ [a, b] $
-
-\[ p(x) = \begin{cases}
-	\frac{1}{b-a} & a \leq x \leq b \\
-	0 & \text{sicer}
-\end{cases}\]
-
-\[ F(x) = \begin{cases}
-	0 & x \leq a \\
-	\frac{x-a}{b-a} & a \leq x \leq b \\
-	1 & b \leq x
-\end{cases}\]
-
-\textbf{Normalna / Gaussova porazdelitev} $N(\mu, \sigma)$
-\[ p(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} \left( \frac{x-\mu}{\sigma} \right)^2}\]
-
-\[ F(x) = \frac{1}{2} + \Phi\left(\frac{x-\mu}{\sigma}\right)\]
-
-Standardizirana normalna porazdelitev: $N(0, 1)$
-
-\textbf{Eksponentna porazdelitev} $\text{Exp}(\lambda)$
-\[ p(x) = \begin{cases}
-	\lambda e^{-\lambda x} & x \geq 0 \\
-	0 & x < 0
-\end{cases}\]
-
-\[ F(x) = \begin{cases}
-	1-e^{-\lambda x} & x \geq 0 \\
-	0 & x < 0
-\end{cases}\]
-
-
-\textbf{Porazdelitev} $\Gamma(b,c)$, $b > 0$, $c > 0$
-\[ p(x) = \begin{cases}
-	\frac{c^b}{\Gamma(b)} x^{b-1} e^{-cx} & x \geq 0 \\
-	0 & x < 0
-\end{cases}\]
-
-Funkcija $\Gamma$
-\begin{gather*}
-	\Gamma(s) = \int_0^{\infty} x^{s-1} e^{-x} dx, \qquad \forall s > 0 \\
-	\Gamma(1) = 1 \qquad \Gamma(s+1) = s \Gamma(s) \qquad \Gamma(\frac{1}{2}) = \sqrt{\pi} \\
-	\Gamma(n+1) = n!\qquad n\in \mathbb{N} \\ 
-	\Gamma(x)\Gamma(x+1) = \frac{\pi}{\sin(\pi x)} 
-\end{gather*}
-
-\textbf{Porazdelitev} $\chi^2(n)$ \\
-$n \in \mathbb{N}$ je št. prostorskih stopenj
-
-\[ \chi^2(n) = \Gamma(\frac{n}{2}, \frac{1}{2})\]
-
-\textbf{Cauchyjeva porazdelitev}
-\[ p(x) = \frac{1}{\pi (1+x^2)}\]
-\[ F(x) = \frac{1}{\pi} \arctan x + \frac{1}{2}\]
-
 \section{Slučajni vektorji}
 Slučajni vektor je $n$-terica slučajnih spremenljivk $X = (X_1, \dots , X_n): \Omega -> R$ 
 
