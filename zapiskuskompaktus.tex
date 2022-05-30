@@ -40,16 +40,16 @@
 \section{Osnove kombinatorike}
 \subsection*{Rodovne funkcije}
 \[
-	\begin{aligned}
-		\sum_{n=0}^{\infty} q^n &= \frac{1}{1-q} &
-		\sum_{n=0}^{b} q^n &= \frac{1-q^{b+1}}{1-q}
-		\\
-		\sum_{n=a}^{\infty} q^n &= \frac{q^{a}}{1-q} &
-		\sum_{n=a}^{b} q^n &= \frac{q^a-q^{b+1}}{1-q}
-	\end{aligned}
+    \begin{aligned}
+        \sum_{n=0}^{\infty} q^n &= \frac{1}{1-q} &
+        \sum_{n=0}^{b} q^n &= \frac{1-q^{b+1}}{1-q}
+        \\
+        \sum_{n=a}^{\infty} q^n &= \frac{q^{a}}{1-q} &
+        \sum_{n=a}^{b} q^n &= \frac{q^a-q^{b+1}}{1-q}
+    \end{aligned}
 \]
 \[
-	a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + ... + ab^{n-2} + b^{n-1})  
+    a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + ... + ab^{n-2} + b^{n-1})  
 \]
 \[ \textstyle \frac{a_0 + ... + a_{k-1}x^{k-1}}{1-x^k} = a_0 + ... + a_{k-1}x^{k-1} + a_0^k + ... + a_{k-1}x^{2k-1} + ...\]
 \[ (x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k}y^{k} \]
@@ -75,25 +75,25 @@ Imamo $n$ oštevilčenih kroglic. Na koliko načinov lahko izberemo $k$ kroglic?
 
 \subsubsection{Pravila za računanje z dogodki}
 \begin{align*}
-	\text{idempotentnost} & \quad A \cup A = A = A \cap A \\
-	\text{komutativnost} & \quad A \cup B = B \cup A \\
-	& \quad A \cap B = B \cap A \\
-	\text{asociativnost} & \quad (A \cup B) \cup C = A \cup ( B \cup C) \\
-	& \quad (A \cap B) \cap C = A \cap ( B \cap C) \\
-	\text{distibutivnost} & \quad (A \cup B) \cap C = (A \cap C) \cup ( A \cap C) \\
-	& \quad (A \cap B) \cup C = (A \cup C) \cap ( A \cup C) \\
-	\text{De Morgan} & \quad \big(\bigcup_{i\in I} A_i \big)^\complement = \bigcap_{i \in I} A_i^\complement  \\
-	& \quad \big(\bigcap_{i\in I} A_i \big)^\complement = \bigcup_{i \in I} A_i^\complement \\
-	& \quad A \cup \Omega = \Omega \quad  A \cap \Omega = A \\
-	& \quad A \cup \emptyset = A \quad  A \cap \emptyset = \emptyset \\
-	& \quad A \cup A^\complement = \Omega \quad A \cap A^\complement = \emptyset
+    \text{idempotentnost} & \quad A \cup A = A = A \cap A \\
+    \text{komutativnost} & \quad A \cup B = B \cup A \\
+    & \quad A \cap B = B \cap A \\
+    \text{asociativnost} & \quad (A \cup B) \cup C = A \cup ( B \cup C) \\
+    & \quad (A \cap B) \cap C = A \cap ( B \cap C) \\
+    \text{distibutivnost} & \quad (A \cup B) \cap C = (A \cap C) \cup ( A \cap C) \\
+    & \quad (A \cap B) \cup C = (A \cup C) \cap ( A \cup C) \\
+    \text{De Morgan} & \quad \big(\bigcup_{i\in I} A_i \big)^\complement = \bigcap_{i \in I} A_i^\complement  \\
+    & \quad \big(\bigcap_{i\in I} A_i \big)^\complement = \bigcup_{i \in I} A_i^\complement \\
+    & \quad A \cup \Omega = \Omega \quad  A \cap \Omega = A \\
+    & \quad A \cup \emptyset = A \quad  A \cap \emptyset = \emptyset \\
+    & \quad A \cup A^\complement = \Omega \quad A \cap A^\complement = \emptyset
 \end{align*}
 
 
 Neprazna družina dogodkov $\mathcal{F}$ v $\Omega$ je $\sigma$-algebra, če velja
 \begin{itemize}
-	\item zaprtost za komplemente: \[ A \in \mathcal{F} \implies A^\complement \in \mathcal{F} \]
-	\item zaprtost za števne unije: \[ A_1, A_2, \dots \in \mathcal{F} \implies \bigcup_{i=1}^\infty A_i \in \mathcal{F} \]
+    \item zaprtost za komplemente: \[ A \in \mathcal{F} \implies A^\complement \in \mathcal{F} \]
+    \item zaprtost za števne unije: \[ A_1, A_2, \dots \in \mathcal{F} \implies \bigcup_{i=1}^\infty A_i \in \mathcal{F} \]
 \end{itemize}
 \textit{Če zahtevamo zaprtost le za končne unije, je $\mathcal{F}$ le algebra.}
 
@@ -111,28 +111,28 @@ Dogodka $A$ in $B$ sta \textbf{nezdružljiva} (disjunktna), če je $A \cup B = \
 
 Zaporedje $\{ A_i \}_i \in \mathcal{F}$ (končno ali števno mnogo) je \textbf{popoln sistem dogodkov}, če
 \begin{align*}
-	\bigcup_i A_i &= \Omega & A_i \cup A_j &= \emptyset, \, \forall i,j: i\neq j
+    \bigcup_i A_i &= \Omega & A_i \cup A_j &= \emptyset, \, \forall i,j: i\neq j
 \end{align*}
 
 
 \textbf{Verjetnost} na $(\Omega, \mathcal{F})$ je preslikava $P: \mathcal{F} \to \mathbb{R}$ z lastnostmi:
 
 \begin{itemize}
-	\item $P(A) \geq 0$ za $\forall A \in \mathcal{F}$
-	\item $P(\Omega) = 1$
-	\item Za paroma nezdružljive dogodke $\{ A_i \}_{i=1}^\infty $ velja \textit{števna aditivnost}
-	\[ P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)\]
+    \item $P(A) \geq 0$ za $\forall A \in \mathcal{F}$
+    \item $P(\Omega) = 1$
+    \item Za paroma nezdružljive dogodke $\{ A_i \}_{i=1}^\infty $ velja \textit{števna aditivnost}
+    \[ P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)\]
 \end{itemize}
 
 Lastnosti $P$:
 \begin{itemize}
-	\item $P(\emptyset) = 0$
-	\item $P$ je končno aditivna.
-	\item $P$ je \textit{monotona}: $A \subseteq B \implies P(A) \leq P(B)$
-	\item $P(A^\complement) = 1 - P(A)$
-	\item $P$ je \textit{zvezna}:
-	\[ A_1 \subseteq A_2 \subseteq \dots \implies P\big(\bigcup_{i=1}^\infty\big) = \lim_{i \to \infty} P(A_i)\]
-	\[ B_1 \supseteq B_2 \supseteq \dots \implies P\big(\bigcap_{i=1}^\infty\big) = \lim_{i \to \infty} P(B_i)\]
+    \item $P(\emptyset) = 0$
+    \item $P$ je končno aditivna.
+    \item $P$ je \textit{monotona}: $A \subseteq B \implies P(A) \leq P(B)$
+    \item $P(A^\complement) = 1 - P(A)$
+    \item $P$ je \textit{zvezna}:
+    \[ A_1 \subseteq A_2 \subseteq \dots \implies P\big(\bigcup_{i=1}^\infty\big) = \lim_{i \to \infty} P(A_i)\]
+    \[ B_1 \supseteq B_2 \supseteq \dots \implies P\big(\bigcap_{i=1}^\infty\big) = \lim_{i \to \infty} P(B_i)\]
 \end{itemize}
 
 
@@ -143,7 +143,7 @@ Lastnosti $P$:
 
 \subsection{Načelo vključitev in izključitev}
 \begin{align*}
-	P(A_1 \cup A_2) &= P(A_1) + P(A_2) - P(A_1 \cap A_2)
+    P(A_1 \cup A_2) &= P(A_1) + P(A_2) - P(A_1 \cap A_2)
 \end{align*}
 \[ P( \bigcup_{i=1}^n A_i) = \sum_{\emptyset \neq S \subseteq [n]} (-1)^{|S|+1} P(\bigcap_{i\in S} A_i)\]
 
@@ -228,8 +228,8 @@ $Poi(\lambda)$, $\lambda > 0$
 
 Za majhno relativno napako zahtevamo še: 
 \begin{itemize}
-	\item $|a-np| \ll \sigma^{4/3}$ ali $|b-np| \ll \sigma^{4/3}$ 	
-	\item $a, b \in \mathbb{Z} + \frac{1}{2}$ ali $b - a \gg 1$
+    \item $|a-np| \ll \sigma^{4/3}$ ali $|b-np| \ll \sigma^{4/3}$ 	
+    \item $a, b \in \mathbb{Z} + \frac{1}{2}$ ali $b - a \gg 1$
 \end{itemize}
 
 \subsubsection{Kumulativna porazdelitvena funkcija}
@@ -273,8 +273,8 @@ spremenljivka z gostoto $p_X$, ki je izven množice A enaka nič. Tedaj je sluč
 spremenljivka $Y := h(X)$ porazdeljena zvezno z gostoto:
 
 \[ p_Y(y) = \begin{cases}
-	p_X\left( h^{-1}(y) \right) \left|(h^{-1})'(y)\right| & y \in B \\
-	0 & sicer	
+    p_X\left( h^{-1}(y) \right) \left|(h^{-1})'(y)\right| & y \in B \\
+    0 & sicer	
 \end{cases}\]
 
 Naj bo $X$ zvezno porazdeljena slučajna spremenljivka z gostoto $p_X$, skoncentrirana na odprti množici $A$. Naj bo $h: A \to \mathbb{R}$ zvezno odvedljiva in $h'(x) \neq 0$ za $\forall x \in A$. 
@@ -286,8 +286,8 @@ Naj bosta $A, B \in \mathbb{R}^n$ odprti množici; $h: A \to B$ taka bijekcija, 
 Tedaj je $Y = h(X)$ porazdeljen:
 
 \[ p_Y(y) = \begin{cases}
-	p_X(h^{-1}(y) |\det J(h^{-1}(y))|) & y \in B \\
-	0 & \text{sicer}
+    p_X(h^{-1}(y) |\det J(h^{-1}(y))|) & y \in B \\
+    0 & \text{sicer}
 \end{cases}\]
 
 \[
@@ -302,8 +302,8 @@ Tedaj je $Y = h(X)$ porazdeljen:
 \subsection{Matematično upanje}
 Diskretno porazdeljena sl. sprem. \\
 $ X \sim \left( \begin{matrix}
-	x_1 & x_2 & \dots \\
-	p_1 & p_2 & \dots
+    x_1 & x_2 & \dots \\
+    p_1 & p_2 & \dots
 \end{matrix}\right) $
 
 \[ E(X) = \sum_{k=1}^\infty x_k p_k \quad \text{če} \quad \sum_{k=1}^\infty |x_k| p_k < \infty \]
@@ -330,20 +330,20 @@ Za poljubne sl. sprem $X_1, \dots, X_n$ velja:
 \subsection{Indikator dogodka}
 Indikator dogodka $A$ je sl. sprem.:
 \begin{align*}
-	1_A &= \begin{cases}
-		1 & A \text{se zgodi} \\
-		0 & A \text{se ne zgodi} \\
-	\end{cases} &
-	E(1_A) &= P(A)
+    1_A &= \begin{cases}
+        1 & A \text{se zgodi} \\
+        0 & A \text{se ne zgodi} \\
+    \end{cases} &
+    E(1_A) &= P(A)
 \end{align*}
 
 \subsection{Disperzija (varianca)}
 \[D(X) = E((X - E(X))^2) = E(X^2) - (E(X))^2\]
 Lastnosti: 
 \begin{itemize}
-	\item $D(X) \geq 0$
-	\item $D(X) = 0 \iff P(X = E(X)) = 1$
-	\item $D(aX) = a^2 D(X)$
+    \item $D(X) \geq 0$
+    \item $D(X) = 0 \iff P(X = E(X)) = 1$
+    \item $D(aX) = a^2 D(X)$
 \end{itemize}
 
 Standardna diviacija/odklon:
@@ -361,19 +361,19 @@ Sl. sprem. $X$ in $Y$ sta nekorelirani, če velja:
 
 \subsection{Kovarianca}
 \begin{align*}
-	K(X,Y) &= E((X-E(X))(Y-E(Y))) \\
-	&= E(XY)-E(X)E(Y)
+    K(X,Y) &= E((X-E(X))(Y-E(Y))) \\
+    &= E(XY)-E(X)E(Y)
 \end{align*}
 
 \begin{itemize}
-	\item $K(X,X) = D(X)$
-	\item $K(X,Y) = 0 \iff X,Y \text{nekorelirani}$
-	\item $K(aX,bY, Z) = aK(X, Z) + bK(Y, Z)$
-	\item $K(X,Y) = K(Y,X)$
-	\item $K(aX+b,cY+d) = acK(X,Y)$
-	\item $|K(X,Y)| \leq \sqrt{D(X)D(Y)}$
-	\item $D(X+Y) = D(X) + D(Y) + 2K(X,Y)$ 
-	\item $D(X_1 + \dots + X_n) = D(X_1) + \dots + D(X_n) + 2\sum_{i=1}^{n-1}\sum_{j=i+1}^{n} K(X_i, X_j)$
+    \item $K(X,X) = D(X)$
+    \item $K(X,Y) = 0 \iff X,Y \text{nekorelirani}$
+    \item $K(aX,bY, Z) = aK(X, Z) + bK(Y, Z)$
+    \item $K(X,Y) = K(Y,X)$
+    \item $K(aX+b,cY+d) = acK(X,Y)$
+    \item $|K(X,Y)| \leq \sqrt{D(X)D(Y)}$
+    \item $D(X+Y) = D(X) + D(Y) + 2K(X,Y)$ 
+    \item $D(X_1 + \dots + X_n) = D(X_1) + \dots + D(X_n) + 2\sum_{i=1}^{n-1}\sum_{j=i+1}^{n} K(X_i, X_j)$
 \end{itemize}
 
 \subsection{Standardizacija}
@@ -384,18 +384,18 @@ Sl. sprem. $X$ in $Y$ sta nekorelirani, če velja:
 
 Lastnosti:
 \begin{itemize}
-	\item $r(X,Y) = 0 \iff X, Y \text{nekorelirani}$
-	\item $-1 \leq r(X,Y) \leq 1$
-	\item $r(X,Y) = 1 \iff P(X_S = Y_S) = 1$
-	\item $r(X,Y) = -1 \iff P(X_S = -Y_S) = 1$
-	\item $r(aX+b, cY+d) = r(X, Y)$
+    \item $r(X,Y) = 0 \iff X, Y \text{nekorelirani}$
+    \item $-1 \leq r(X,Y) \leq 1$
+    \item $r(X,Y) = 1 \iff P(X_S = Y_S) = 1$
+    \item $r(X,Y) = -1 \iff P(X_S = -Y_S) = 1$
+    \item $r(aX+b, cY+d) = r(X, Y)$
 \end{itemize}
 
 \section{Pogojne porazdelitve}
 Pogojna porazdelitev sl. sprem. $X$ glede na dogodek $B$:
 \[ X|B \sim \left( \begin{matrix}
-	a_1 & a_2 &\dots \\
-	P(X = a_1 | B) & P(X = a_2 | B) &\dots 
+    a_1 & a_2 &\dots \\
+    P(X = a_1 | B) & P(X = a_2 | B) &\dots 
 \end{matrix}\right)\]
 
 \subsection{Pogojna porazdelitvena funkcija}
@@ -411,8 +411,8 @@ sl. sprem. $X$ glede na dogodek $B$:
 \subsection{Pogojno matematično upanje}
 \[ E(h(X) | B) = \sum_x h(x) P(X = x | B)\]
 \begin{align*}
-	E(X|Y=y) &= \int_{-\infty}^\infty x p_{(X|Y)(x|y)} dx \\
-	&= \frac{1}{p_Y(y)} \int_{-\infty}^\infty x p_{(X,Y)(x,y)} dx
+    E(X|Y=y) &= \int_{-\infty}^\infty x p_{(X|Y)(x|y)} dx \\
+    &= \frac{1}{p_Y(y)} \int_{-\infty}^\infty x p_{(X,Y)(x,y)} dx
 \end{align*}
 \[ E(h(X,Y) |Y=y) = E(h(X,y) | Y=y ) \]
 \[ E(h(X,Y) | Y) = \sum_x h(x,Y) P(X=x |Y)\]
@@ -442,9 +442,9 @@ Moment reda $k$ glede na točko $a$ je
 \[ m_k(a) = E((X-a)^k) \quad \textit{če obstaja}\]
 
 \begin{itemize}
-	\item \textbf{Začetni moment} $z_k := m_k(0) = E(X^k)$
-	\item \textbf{Centralni moment} $m_k := m_k(E(X)) = E((X-E(x))^k)$
-	\item \textbf{Faktorski moment} reda $r$: $E(X(X-1)\dots (X-r+1)) = G_X^{(r)}(1)$
+    \item \textbf{Začetni moment} $z_k := m_k(0) = E(X^k)$
+    \item \textbf{Centralni moment} $m_k := m_k(E(X)) = E((X-E(x))^k)$
+    \item \textbf{Faktorski moment} reda $r$: $E(X(X-1)\dots (X-r+1)) = G_X^{(r)}(1)$
 \end{itemize}
 
 \[ z_1 = E(X) \qquad m_2 = D(X)\]
@@ -475,9 +475,9 @@ je vsaka vrednost $x_p$, za katero velja:
 oz. $F(x_p-) \leq p \leq F(x_p)$
 
 \begin{itemize}
-	\item Mediana: $x_{\frac{1}{2}}$
-	\item Kvartili: $x_{\frac{1}{4}}, x_{\frac{2}{4}}, x_{\frac{3}{4}}$
-	\item (Per)centili: $x_{\frac{1}{100}}, \dots, x_{\frac{99}{100}}$
+    \item Mediana: $x_{\frac{1}{2}}$
+    \item Kvartili: $x_{\frac{1}{4}}, x_{\frac{2}{4}}, x_{\frac{3}{4}}$
+    \item (Per)centili: $x_{\frac{1}{100}}, \dots, x_{\frac{99}{100}}$
 \end{itemize}
 
 \subsection{Semi interkvartilni razmik}
@@ -539,8 +539,8 @@ Velja tudi $E(S) = E(N)E(X)$.
 
 \section{Momentno rodovna funkcija}
 \begin{align*}
-	M_X(t) &= E(e^{tX}) \qquad \forall t \in R \quad \textit{če obstaja} \\
-	&= 1 + z_1t + \frac{z_2}{2!} t^2 + \frac{z_3}{3!} t^3 + \dots 
+    M_X(t) &= E(e^{tX}) \qquad \forall t \in R \quad \textit{če obstaja} \\
+    &= 1 + z_1t + \frac{z_2}{2!} t^2 + \frac{z_3}{3!} t^3 + \dots 
 \end{align*} 
 
 V primeru, ko ima $X$ zalogo vrednosti v $\mathbb{N} \cup \{0\}$, je 
@@ -649,6 +649,300 @@ potem
     \item $\frac{1}{2} B(p,q) = \displaystyle \int_0^{\frac{\pi}{2}} (\sin x)^{2p-1} (\cos x)^{2q-1}$
     \item simetričnost: $B(p,q) = B(q,p)$
 \end{itemize}
+
+
+
+% STATISTIKA
+
+\section{Osnivni pojmi statistike}
+Na verjetnostnem prostoru $(\Omega, \mathcal{F})$ imamo sl. sprem $X$.
+
+Vzorec velikosti $n$ je sl. vektor $(X_1, \dots, X_n)$, kjer so $X_i$ paroma neodvisni in porazdeljeni kot $X$.
+
+Vrednost tega sl. vektorja pri enem naboru meritev je $(x_1, \dots, x_n)$. To so konkretni podatki, ki jih analiziramo.
+
+Ocene za $\mu$ (mat. up. sl. sprem $X$)
+\begin{itemize}
+    \item vzorčno povprečje: $\overline{x} = \frac{x_1 + \dots + x_n}{n}$
+    \item vzorčni modus: \textit{najpogostejša vrednost}
+    \item vzorčna mediana: srednja vrednost v po velikosti urejenem vzorcu
+\end{itemize}
+Ocene za $\sigma$ (standardna diviacija $X$)
+\begin{itemize}
+    \item vzorčni razmak: $\max(x) - min(x)$
+    \item vzorčna disperzija: $s_0^2 = \frac{1}{n} \sum_{i=1}^n (\overline{x} - x_i)^2$
+    \item vzorčna diviacija: $s_0 = \sqrt{s_0^2}$
+    \item popravljena vzorčna disperzija: \\ $s^2 = \frac{1}{n-1} \sum_{i=1}^n (\overline{x} - x_i)^2 = \frac{n}{n-1} s_0^2$
+    \item popravljena vzorčna diviacija: $s = \sqrt{s^2}$
+\end{itemize}
+
+
+\section{Vzorčne statistike in cenilke}
+Naj bo $(X_1, \dots, X_n)$ vzorec velikosti $n$.
+
+\textbf{Vzorčna statistika} je simetrična funkcija vzorca:
+\[ Y = Y_n = g(X_1, \dots, X_n)\]
+
+Praviloma vzorčna statistika ocenjuje nek parameter $\zeta$. Tedaj je $Y$ \textbf{cenikla} parametra.
+
+$Y$ je \textbf{nepristranska} cenilka, če $E(Y) = \zeta$.
+
+$Y$ je \textbf{dosledna} cenilka, če $Y_n \xrightarrow[n \to \infty]{ver.} \zeta$ oziroma $\forall \varepsilon > 0: \lim_{n\to \infty} P(|Y_n - \zeta| < \varepsilon) = 1$.
+
+\textbf{Standardna napaka} vzorčne statistike $SE(Y)$ je standardna diviacija $\sigma(Y)$.
+
+
+Naj bo $Y_n$ cenilka za $\zeta$. Če je $E(Y_n) \xrightarrow[n \to \infty]{} \zeta$ in $D(Y_n) \xrightarrow[n \to \infty]{} 0$, potem je $Y_n$ \textbf{dosledna} cenilka za $\zeta$.
+
+
+\subsection{Vzorčna statistika $\chi^2$}
+
+\[ \chi^2 = \frac{1}{\sigma^2} \sum_{i=1}^{n} (X_i - \overline{X})^2 = \frac{n}{\sigma^2}S_0^2 = \frac{n-1}{\sigma^2}S^2\]
+\[ \chi^2 \sim \chi^2(n-1)\]
+
+\subsection{Studentova porazdelitev}
+\begin{align*}
+    p_T(t) &= \frac{1}{\sqrt{n} B(\frac{n}{2}, \frac{1}{2} )} \left(1 + \frac{t^2}{n}\right)^{-\frac{n+1}{2}} \\
+    &= \frac{\Gamma(\frac{n+1}{2})}{\sqrt{\pi n} \Gamma(\frac{n}{2})} \left(1 + \frac{t^2}{n}\right)^{-\frac{n+1}{2}}
+\end{align*}
+
+\section{Metode za pridobivanje cenilk}
+\subsection{Momentna metoda}
+Naj bo $(X_1, X_n)$ vzorec velikosti $n$ in $k \in \mathbb{N}$.
+\textbf{Vzorčni $k$-ti moment}
+\[ Z_k = \frac{1}{n}\left( X_1^k + X_n^k \right)\]
+je \textit{nepristranska dosledna} cenikla za $z_k = E(X^k)$.
+
+Naj bo $X$ zvezno porazdeljena z gostoto $p(x; \xi_1, \dots, \xi_n)$ in naj obstajajo začetni momenti 
+$z_k = E(X^k) = \int_{-infty}^{\infty} x^k p(x; \xi_1, \dots, \xi_n) dx$ za $k = 1, \dots, m$. Denimo, da se
+iz teh enačb da izraziti parametre $\xi_k = \varphi_k(z_1, \dots, z_m)$. Potem je $C_k = \varphi(Z_1, \dots, Z_m)$ cenilka za parameter $\xi_k$.
+
+\subsection{Metoda maksimalne zaneslijvosti (verjetja)}
+Naj bo gostota odvisna od parametra $\xi$: $p(x, \xi)$.
+\textbf{Funkcija zaneslijivosti:}
+\[L(x_1, \dots, x_n, \xi) = p(x_1, \xi) \dots p(x_n, \xi)\]
+Pri danih $x_1, \dots, x_n$ izberemo $\xi$, da je dosežen maksimum funkcije $L$.
+
+Ta vrednost je odvisna le od $x_1, \dots, x_n$, torej $\xi_{\max} = \varphi(x_1, \dots, x_n)$. Tako dobimo cenilko za $\xi$:
+
+\[ C = \varphi(X_1, \dots, X_n)\]
+
+\section{Intervalsko ocenjevanje parametrov}
+Naj bo gostota sl. sprem $X$ odvisna od parametra $\xi$ in naj bo $(x_1, \dots, x_n)$ vzorec.
+
+Interval $[A, B]$ (\textit{ki je odvisen le od vzorca}) je inteval zaupanja za parameter $\xi$ pri \textbf{stopnji tveganja} $\alpha \in [0,1]$,
+če je verjetnost
+\begin{align*}
+    P(\xi \in [A, B]) &= 1 - \alpha & P(\xi \notin [A, B]) &= \alpha
+\end{align*}
+Številu $1 - \alpha$ rečamo \textbf{stopnja zaupanja} $A$ in $B$ pa sta vzorčni statistiki.
+
+\section{Preizkušanjue hipotez}
+Hipoteza je \textbf{enostavna}, če natančno določa porazdelitev, sicer pa je \textbf{sestavljena}.
+
+Izberemo \textbf{stopnjo značilnosti} $\alpha$, to je verjstnost, da zavrnemo pravilno hipotezo. \textbf{Testi značilnosti} nam
+povejo ali pri dani $\alpha$ in vzorčni vrednosti zavrnemo hipotezo ali ne.
+
+\subsection{Test Z}
+$X \sim N(\mu, \sigma)$, $\sigma$ poznamo, $\mu_0$ dano število
+\[ H_0(\mu = \mu_0) : H_1(\mu \neq \mu_0)\]
+
+Testna statistika, ki odloča o zavrnitvi hipoteze:
+\[ Z = \frac{\overline{X} - \mu_0}{\sigma} \sqrt{n}\]
+
+Če velja $H_0$, je $Z \sim N(0,1)$.
+
+Iz tabele razberemo $z_{\alpha/2} > 0$, da je $P(Z > z_{\alpha/2}) = \alpha/2$.
+
+Hipotezo $H_0$ zavrnemo, če vzorčna vrednost za $Z$ leži na kritičnem območju:
+\[ K_\alpha = (-\infty, -z_{\alpha/2}] \cup [z_{\alpha/2}, \infty)\]
+
+\subsection{Test T}
+$X \sim N(\mu, \sigma)$, $\sigma$ ni znan, $\mu_0$ dano število
+\[ H_0(\mu = \mu_0) : H_1(\mu \neq \mu_0)\]
+
+Testna statistika, kjer je $s$ popravljena vzorčna disperzija:
+\[ T = \frac{\overline{X} - \mu_0}{s} \sqrt{n}\]
+
+Če velja $H_0$, je $T \sim Student(n-1)$.
+
+\subsection{P - vrednost}
+je najmanjša stopnja značilnosti $\alpha$ pri kateri še lahko zavrnemo hipotezo (pri danih vzorčnih podatkih).
+
+\subsection{Studentov primerjalni test}
+Imamo 2 neodvisna vzorca velikosti $m$ in $n$. Prvi je vzet iz populacije na kateri imamo sl. sprem $X \sim N(\mu_X, \sigma)$, drugi pa je 
+vzet iz populacije na kateri imamo sl. sprem $Y \sim N(\mu_Y, \sigma)$. 
+
+Paramatrov $\mu_X, \mu_Y, \sigma$ ne poznamo.
+
+Naj bosta $S_X^2$ in $S_Y^2$ popravljeni vzorčni disperziji za $(X_1, \dots, X_m)$ in $(Y_1, \dots, Y_n)$.
+
+\textbf{Skupna vzorčna varianca} je
+\[ S^2 = \frac{(m-1)S_X^2 + (n-1)S_X^2}{m+n-2}\]
+
+Testiramo hipotezo $H_0(\mu_X = \mu_Y) : H_1(\mu_X \neq \mu_Y)$.
+
+Testna statistika:
+\[ T = \frac{\overline{X} - \overline{Y}}{S}\sqrt{\frac{mn}{m+n}}\]
+
+Če $H_0$ velja, je $T \sim \text{Student}(m+n-2)$.
+
+\subsection{Test $\chi^2$ (Pearson)}
+Naj ima sl. sprem $X$ porazdelitveno funkcijo $F$, ki ni znana.
+
+Preizkušamo domnevo o tipu porazdelitvenega zakona:
+\[ H_0(F = F_0) : H_1(F \neq F_0)\]
+kjer je $F_0$ dana porazdelitvena funkcija.
+
+Zalogo vrednosti sl. sprem $X$ razdelimo na $r$ razredov: $S_1, \dots, S_r$, da je $p_k = P(X \in S_k | H_0) > 0$ za $\forall k = 1, \dots, r$.
+
+Naj bo $(X_1, \dots, X_n)$ slučajni vzorec za sl. sprem $X$ in $N_k$ število vrednosti vzorca, ki padejo v $S_k$. 
+
+\[ N_k \sim \text{Bin}(n, p_k), \qquad k = 1, \dots, r\]
+
+Pri velikem $n$ ima statistka
+\[\chi^2 = \sum_{k=1}^r \frac{(\overbrace{N_k}^{\text{opažena f.}} - \overbrace{np_k}^{\text{pričakovana f.}})^2}{np_k}\]
+približno porazdelitev $\chi^2(r-1)$
+
+Iz tabele razberemo $c_{\alpha} > 0$, da je $P(\chi^2 > c_{\alpha}) = \alpha$. Kritično območje: $K_{\alpha} = [c_{\alpha}, \infty)$.
+
+\textbf{Trditev:} Če so v testu $\chi^2$ verjetnosti $p_k$ odvisne od parametra $\theta$, potem ima statistika
+\[ \chi^2 = \sum_{k=1}^r \frac{({N_k} - {np_k(\hat{\theta})})^2}{np_k(\hat{\theta})}\]
+porazdelitev približno $\chi^2(r-2)$, kjer je $\hat{\theta}$ cenilka za $\theta$ po metodi maksimalne zaneslijivosti.
+
+\section{Linearna regresija }
+
+Linearni regresijski model:
+\[ Y = a + bx + U\]
+Pri fiksnem $x$ predpostavimo, da $Y = a + bx + U$, kjer sta $a, b$ konstanti in $U \sim N(0, \sigma)$. 
+Z drugimi besedami $Y \sim N(a+bx, \sigma)$. $y = a+bx$ je \textbf{regresijska premica}.
+
+Za različne vrednosti $x_1, \dots, x_n$ dobimo slučajni vektor $(Y_1, \dots, Y_n)$, kjer je $Y_k \sim N(a+bx_k, \sigma)$.
+
+Radi bi ocenili vrednost $a$ in $b$.
+
+\subsection{Metoda maksimalne zaneslijvosti}
+\begin{align*}
+    \hat{b} &= \frac{\sum_{k=1}^n (x_k - \overline{x})(Y_k - \overline{Y})}{\sum_{k=1}^n (x_k - \overline{x})^2} &
+    \hat{a} &= \overline{Y} - \hat{b}\overline{x}
+\end{align*}
+
+Vpeljemo vsote:
+{\small
+\begin{align*}
+    S_{xx} &= \sum_{k=1}^n x_k^2 &
+    S_{xY} &= \sum_{k=1}^n x_k Y_k &
+    S_{x} &= \sum_{k=1}^n x_k &
+    S_{Y} &= \sum_{k=1}^n Y_k
+\end{align*}}
+Potem je
+\begin{align*}
+    \hat{b} &= \frac{n S_{xY} - S_x S_Y}{nS_{xx} - S_x^2} &
+    \hat{a} &= \frac{1}{n} S_Y - \hat{b} \frac{1}{n} S_x
+\end{align*}
+
+
+\section{Testiranje neodvisnosti}
+\subsection{Prilagoditveni test}
+\textit{To je poseben primer Pearsonevega testa $\chi^2$}
+
+$H_0$: dogodka $A$ in $B$ sta neodvisna.
+
+\begin{align*}
+    p &= P(A) &  q &= P(B)
+\end{align*}
+\begin{center}
+    \begin{tabular}{r | c c c c}
+        kategorije & $A \cap B$ & $A \cap B^\complement$ & $A^\complement \cap B$ & $A^\complement \cap B^\complement$ \\ \hline
+        verjetnost & $pq$ & $p(1-q)$ & $(1-p)q$ & $(1-p)(1-q)$
+    \end{tabular}
+\end{center}
+
+Če sta $p$ in $q$ znana, uporabimo test $\chi^2$ z $r = 4$
+{\small
+\begin{multline*}
+    \chi^2 = \frac{(N_{A \cap B} - npq)^2}{npq} + \frac{(N_{A \cap B^\complement} - np(1-q))^2}{np(1-q)} + \\ + \frac{(N_{A^\complement \cap B} - n(1-p)q)^2}{n(1-p)q} + \frac{(N_{A^\complement \cap B^\complement} - n(1-p)(1-q))^2}{n(1-p)(1-q)}
+\end{multline*}}
+ima porazdelitev $\chi^2(3)$
+
+Iz tabele razberemo $c_\alpha$, da je $P(\chi^2 > c_\alpha) = \alpha$. Kritično območje: $K_\alpha = [-c_\alpha, c_\alpha]$
+
+Če pa $p$ in $q$ nista znana, ju ocenimo iz podatkov:
+\begin{align*}
+    \hat{p} &= \frac{N_{A\cap B} + N_{A \cap B^\complement}}{n} &
+    \hat{q} &= \frac{N_{A\cap B} + N_{A^\complement \cap B}}{n}
+\end{align*}
+Testna statistkia $\chi^2$ je potem porazdeljena $\chi^2(1)$.
+
+\textbf{Prilagoditveni test} lahko posplošimo na večje \textit{kontingenčne} tabele. 
+Denimo, da prva karakteristika določa $r$ kategorij $(A_1, \dots, A_r)$, druga pa $s$ kategorij $(B_1, \dots, B_s)$.
+
+$H_0$: $A_i$ in $B_i$ sta neodvisna.
+
+Naj bo $p_i = P(A_i)$ in $q_j(B_j)$.
+
+Naj bo $X_{ij}$ opažena frekvenca kategorije $A_i$ in $B_j$.
+
+Pričakovana frekvenca za $X_{ij}$ je $n\hat{p_i} \hat{q_j}$.
+
+\begin{align*}
+    \hat{p}_i = \frac{1}{n} \sum_{j=1}^s X_{ij} \quad \dots \quad \text{cenika za } p_i \\
+    \hat{q}_j = \frac{1}{n} \sum_{i=1}^r X_{ij} \quad \dots \quad \text{cenika za } q_j \\
+\end{align*}
+
+\[ \chi^2 = \sum_{i=1}^r \sum_{j=1}^s \frac{(X_{ij} - n\hat{p}_i \hat{q}_j)^2}{n\hat{p}_i \hat{q}_j}\]
+
+\[ \chi^2 \sim \chi^2((r-1)(s-1))\]
+
+Pri dani stopnji zaupanja $\alpha$ iz tabele razberemo $c_\alpha$, da $P(\chi^2 > c_\alpha) = \alpha$. 
+Kritično območje: $K_\alpha = [c_\alpha, \infty)$
+
+\textit{Če je $n\hat{p}\hat{q} < 5$ za kak $i, j$ moramo združiti nekatere razrede.}
+
+\section{Neparametrični testi}
+\subsection{Test z znaki}
+\textit{analog testa T}
+
+Na populaciji imamo sl. sprem. $X$ s porazdelitveno fun. $F_X$ in sl. sprem. $Y$ s porazdelitveno fun. $F_Y$.
+
+Obravnavamo sl. vektorja $(X_1, \dots, X_n)$ in $(Y_1, \dots, Y_n)$, kjer $X_i$ in $Y_i$ dobimo na istem elementu populacije.
+
+Testiramo hipotezo: $H_0 (F_X = F_Y)$
+
+Definirajmo razliko $D_i = X_i - Y_i$ za $i = 1,\dots , n$. Privzamemo, da so vzorčne vrednosti $D_i \neq 0$, sicer jih izpustimo in zmanjšamo $n$.
+
+Če velja $H_0$, je $P(D_i > 0) = \frac{1}{2} = P(D_i < 0)$.
+
+Naj bo $S^+$ število pozitivnih $D_i$, $S^-$ pa število negativnih. Tedaj je $S^+ \sim \text{Bin}(n, \frac{1}{2})$, torej je $p_k = P(S^+ = k) = \binom{n}{k}2^{-k}$.
+
+Pri dani stopnji značilnosti $\alpha$ je kritično območje:
+\[ K_\alpha = \left\{ k \in \{0, \dots, n\} \ :\ k \leq k_\alpha \text{ ali } k \geq n - k_\alpha \right\}\]
+kjer je $k_\alpha$ doočena z zahtevama:
+{\small
+\[P(S^+ \leq k_\alpha) = \sum_{k=0}^{k_\alpha} p_k \leq \frac{\alpha}{2} \quad \text{in} \quad P(S^+ \leq k_\alpha + 1) = \sum_{k=0}^{k_\alpha + 1} p_k > \frac{\alpha}{2} \]
+}
+
+Za velike $n$ je $S^+ \approx N(\frac{n}{2}, \sqrt{n\frac{1}{2}\frac{1}{2}})$.
+
+\subsection{Inverzijski test}
+\textit{Analog primerjalnega T testa}
+
+Naj bosta $X$ in $Y$ sl. sprem s porazdelitvenima funkcijama $F_X$ in $F_Y$. Vzorca $(X_1, \dots, X_m)$ in $(Y_1, \dots, Y_n)$ sta neodvisna. Predpostavimo, da $m \leq n$.
+Vzorčne vrednosti $x_1, \dots, x_m$ in $y_1, \dots, y_n$ razvrstimo po velikosti: $z_1 \leq z_2 \leq \dots \leq z_{m+n}$.
+
+\[ R_i = \text{rang}(x_i) = k \iff  x_i = z_k \]
+\textit{Če je več zaporednih vrednosti enakih, za rang vzamemo povprečno mesto.}
+
+\[ V = R_1 + \dots + R_m \]
+
+Če velja $H_0(F_X = F_Y)$ in $m+n \geq 20$ in $m,n$, je $V$ približno normalno porazdeljena:
+\[ V \sim N\left( \frac{(m+n+1)m}{2}, \frac{}{} \right)\]
+
+\[ Z = \sqrt{\frac{3}{mn(m+n+1)}} (2V - m(m+n+1)) \sim N(0,1) \]
+
+\textbf{Inverzija} med $X_i$ in $Y_j$ se pojavi, če ima $Y_j$ manjši rang kot $X_i$.
+
+Naj bo $U$ št. inverzij v zaporedju $z_1, \dots, z_{n+m}$. Potem je $V = U + \frac{m(m+1)}{2}$, ker vsaka inverzija poveča vsoto rangov za 1.
 
 \end{multicols}
 \end{document}
