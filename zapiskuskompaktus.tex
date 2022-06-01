@@ -967,21 +967,52 @@ kjer je $k_\alpha$ doočena z zahtevama:
 
 Za velike $n$ je $S^+ \approx N(\frac{n}{2}, \sqrt{n\frac{1}{2}\frac{1}{2}})$.
 
+\subsubsection{Dodatek iz vaj}
+Ničelna domneva $H_0:\ P(X > Y) = P(Y > X)$. Alterativna dovmneva:
+\begin{itemize}
+    \item $H_1^X:\ P(X > Y) > P(Y > X)$ \\
+    \[p(k, l) = P(S' \geq k) = P(S' \leq l)\]
+    \item $H_1^Y:\ P(Y > X) > P(X > Y)$
+    \[p(k, l) = P(S' \geq l) = P(S' \leq k)\]
+    \item $H_1^\pm:\ $ velja bodisi $H_1^X$ bodisi $H_1^Y$
+    \begin{align*}
+        p(k, l) &= 2 \min (P(S' \geq k),  P(S' \geq k)) \\
+        & = 2 \min (P(S' \leq k),  P(S' \leq k))
+    \end{align*}
+\end{itemize}
+
+$S_X$ št. meritev kjer je $X > Y$, $S_Y$ št. meritev kjer je $X < Y$, $\hat{n} = S_X + S_Y$, $S' \sim \text{Bin}(\hat{n}, 1/2)$
+
+$H_0$ zavrnemo če je $p(S_X, S_Y) \leq \alpha$.
+
+Če je $\hat{n} \geq 10$ lahko $H_0$ zavrnemo:
+\begin{itemize}
+    \item proti $H_1^X$, če $\frac{S_x - S_Y - 1}{\sqrt{\hat{n}}} \geq z_\alpha$
+    \item proti $H_1^Y$, če $\frac{S_x - S_Y - 1}{\sqrt{\hat{n}}} \leq -z_\alpha$
+    \item proti $H_1^\pm$, če $\frac{|S_x - S_Y| - 1}{\sqrt{\hat{n}}} \leq -z_{\alpha/2}$
+\end{itemize}
+
 \subsection{Inverzijski test}
 \textit{Analog primerjalnega T testa}
 
 Naj bosta $X$ in $Y$ sl. sprem s porazdelitvenima funkcijama $F_X$ in $F_Y$. Vzorca $(X_1, \dots, X_m)$ in $(Y_1, \dots, Y_n)$ sta neodvisna. Predpostavimo, da $m \leq n$.
 Vzorčne vrednosti $x_1, \dots, x_m$ in $y_1, \dots, y_n$ razvrstimo po velikosti: $z_1 \leq z_2 \leq \dots \leq z_{m+n}$.
 
-\[ R_i = \text{rang}(x_i) = k \iff  x_i = z_k \]
+\[ R(x) = \text{rang}(x) = \frac{\#\{i; z_i < x\} + \#\{i; z_i \leq x\} + 1}{2}\]
 \textit{Če je več zaporednih vrednosti enakih, za rang vzamemo povprečno mesto.}
 
 \[ V = R_1 + \dots + R_m \]
 
 Če velja $H_0(F_X = F_Y)$ in $m+n \geq 20$ in $m,n$, je $V$ približno normalno porazdeljena:
-\[ V \sim N\left( \frac{(m+n+1)m}{2}, \frac{}{} \right)\]
+\[ V \sim N\left( \frac{(m+n+1)m}{2}, \sqrt{\frac{mn(m+n+1)}{12}} \right)\]
 
 \[ Z = \sqrt{\frac{3}{mn(m+n+1)}} (2V - m(m+n+1)) \sim N(0,1) \]
+
+\begin{align*}
+    &H_1^X(X \text{ je stoh. strog. več od } Y (F_X < F_Y)): K_\alpha = [z_\alpha, \infty) \\
+    &H_1^Y(Y \text{ je stoh. strog. več od } X (F_X > F_Y)): K_\alpha = (-\infty, z_\alpha] \\
+    &H_1^\pm(F_X \neq F_Y): K_\alpha = (-\infty, z_{\alpha/2}] \cup [z_{\alpha/2}, \infty)
+\end{align*}
 
 \textbf{Inverzija} med $X_i$ in $Y_j$ se pojavi, če ima $Y_j$ manjši rang kot $X_i$.
 
