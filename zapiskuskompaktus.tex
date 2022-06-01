@@ -798,6 +798,17 @@ Testna statistika, kjer je $s$ popravljena vzorčna disperzija:
 
 Če velja $H_0$, je $T \sim Student(n-1)$.
 
+\subsubsection{Vzorci po parih}
+Imamo neodvisne pare $(X_1, Y_1), \dots, (X_n, Y_n)$ z $(X_i, Y_i) \sim N(\mu_X, \mu_y, \sigma_X, \sigma_Y, \rho)$. Preverjamo $H_0: \mu_X = \mu_Y$.
+
+Pare pretvorimo v razlike: $R_i = X_i - Y_i$ in na njih naredimo T test za $\mu_0 = 0$.
+{\small
+\begin{align*}
+    H_1^X:& \mu_X > \mu_Y & K_\alpha &= [t_\alpha(n-1), \infty) \\
+    H_1^Y:& \mu_X < \mu_Y & K_\alpha &= (-\infty, -t_\alpha(n-1)] \\
+    H_1^\pm:& \mu_X \neq \mu_Y & K_\alpha &= (-\infty, -t_{\alpha/2}(n-1)] \cup [z_{\alpha / 2}(n-1), \infty) \\
+\end{align*}}
+
 \subsection{P - vrednost}
 je najmanjša stopnja značilnosti $\alpha$ pri kateri še lahko zavrnemo hipotezo (pri danih vzorčnih podatkih).
 
