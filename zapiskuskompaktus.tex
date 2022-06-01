@@ -654,7 +654,7 @@ potem
 
 % STATISTIKA
 
-\section{Osnivni pojmi statistike}
+\section{Osnovni pojmi statistike}
 Na verjetnostnem prostoru $(\Omega, \mathcal{F})$ imamo sl. sprem $X$.
 
 Vzorec velikosti $n$ je sl. vektor $(X_1, \dots, X_n)$, kjer so $X_i$ paroma neodvisni in porazdeljeni kot $X$.
@@ -685,11 +685,13 @@ Naj bo $(X_1, \dots, X_n)$ vzorec velikosti $n$.
 
 Praviloma vzorčna statistika ocenjuje nek parameter $\zeta$. Tedaj je $Y$ \textbf{cenikla} parametra.
 
-$Y$ je \textbf{nepristranska} cenilka, če $E(Y) = \zeta$.
+$Y$ je \textbf{nepristranska} cenilka, če $E(Y) = \zeta$, sicer \textbf{pristarnskost} merimo kot $B(Y) = E(Y) - \zeta$.
 
 $Y$ je \textbf{dosledna} cenilka, če $Y_n \xrightarrow[n \to \infty]{ver.} \zeta$ oziroma $\forall \varepsilon > 0: \lim_{n\to \infty} P(|Y_n - \zeta| < \varepsilon) = 1$.
 
-\textbf{Standardna napaka} vzorčne statistike $SE(Y)$ je standardna diviacija $\sigma(Y)$.
+\textbf{Standardna napaka} vzorčne statistike $\text{SE}(Y)$ je standardna diviacija $\sigma(Y)$.
+
+\textbf{Srednja kvadratična napaka}: $\text{MSE}(Y) = E((Y-\zeta)^2) = D(Y) + B(Y)^2$.
 
 
 Naj bo $Y_n$ cenilka za $\zeta$. Če je $E(Y_n) \xrightarrow[n \to \infty]{} \zeta$ in $D(Y_n) \xrightarrow[n \to \infty]{} 0$, potem je $Y_n$ \textbf{dosledna} cenilka za $\zeta$.
@@ -736,6 +738,36 @@ Interval $[A, B]$ (\textit{ki je odvisen le od vzorca}) je inteval zaupanja za p
     P(\xi \in [A, B]) &= 1 - \alpha & P(\xi \notin [A, B]) &= \alpha
 \end{align*}
 Številu $1 - \alpha$ rečamo \textbf{stopnja zaupanja} $A$ in $B$ pa sta vzorčni statistiki.
+
+\subsection{Waldov interval zaupanja}
+$n$ neodvisnih poskusov vsak uspe z verjetnostjo $p$. Opazimo, da uspe $S$ poskusov.
+\begin{align*}
+    \hat{p} &= \frac{S}{n} & c = z_{\alpha/2} &= \Phi^{-1}\left(\frac{1-\alpha}{2}\right)
+\end{align*}
+Waldov interval zaupanja za $p$:
+\[\hat{p} - c\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} < p < \hat{p} + c\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\]
+\textit{Ta interval zaupanja ni preveč natančen. Računamo le na toliko mest kot jih ima $n$ in enice ne štejemo za mesto.}
+\subsection{Ocenjevanje $\mu$ in $\sigma$}
+Opazimo $X_1, \dots, X_n \sim N(\mu, \sigma)$
+
+\begin{itemize}
+    \item Zanima nas $\mu$, $\sigma$ je znan.
+    \begin{align*}
+        \frac{\overline{X} - \mu}{\sigma}\sqrt{n} &\sim N(0, 1) & \Delta &= \frac{c\sigma}{\sqrt{n}} \\
+        c = z_{\alpha/2} &= \Phi^{-1}\left(\frac{1-\alpha}{2}\right) & \overline{X} - \Delta &< \mu < \overline{X} + \Delta
+    \end{align*}
+    \item Zanima nas $\mu$, $\sigma$ ni znan. Za $\sigma$ vzamemo cenilko $s$.
+    \begin{align*}
+        \frac{\overline{X} - \mu}{s}\sqrt{n} &\sim \text{Student}(n-1) & \Delta &= \frac{c\sigma}{\sqrt{n}} \\
+        c &= t_{\alpha/2}(n-1) & \overline{X} - \Delta &< \mu < \overline{X} + \Delta
+    \end{align*}
+    \item Zanima nas $\sigma$, $\mu$ ni znan.
+    \[ \frac{1}{\sigma^2} \sum_{i=1}^n (X_i - \overline{X})^2 = \frac{(n-1)s^2}{\sigma^2} \sim \chi^2(n-1) \]
+    \begin{align*}
+        c_1 &= \chi^2_{1-\alpha/2}(n-1) & c_2 &= \chi^2_{\alpha/2}(n-1)
+    \end{align*}
+    \[ s\sqrt{\frac{n-1}{c_2}} < \sigma < s\sqrt{\frac{n-1}{c_1}}\]    
+\end{itemize}
 
 \section{Preizkušanjue hipotez}
 Hipoteza je \textbf{enostavna}, če natančno določa porazdelitev, sicer pa je \textbf{sestavljena}.
