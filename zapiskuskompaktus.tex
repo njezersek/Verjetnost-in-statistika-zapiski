@@ -242,7 +242,7 @@ Funkciji $p_X$ pravimo \textbf{porazdelitvena gostota}
 
 
 Komulativna funkcija slučajne spremenljivke $X$
-\[ F_X(x) = \int_{\infty}^x p_X(t) dt \]
+\[ F_X(x) = \int_{-\infty}^x p_X(t) dt \]
 
 Če je $F_X$ zvezna in odsekoma zvezno odvedljiva, je $X$ porazdeljena zvezno in za vse razen za končno mnogo točk $x$ velja $p_x(x) = F'_X(x)$.
 
@@ -611,7 +611,7 @@ Zgornji pogoj velja, če je $\sup_n D(X_n) < \infty$
 Naj bodo  $X_1, X_2, \dots$ neodvisne in enako porazdeljene sl. sprem. z disperzijo. Potem velja KZVŠ.
 
 \section{Centralni limitni izrek}
-Naj bo $X_1, X_2, X_n, \dots$ zaporedje sl. sprem. z mat. up. in naj bo $S = X_1 +\dots + X_n$, $Z_n = \frac{S_n - E(S_n)}{n}$. Potem je $E(Z_n) = 0$ in $D(Z_n) = 1$.
+Naj bo $X_1, X_2, X_n, \dots$ zaporedje sl. sprem. z mat. up. in naj bo $S = X_1 +\dots + X_n$, $Z_n = \frac{S_n - E(S_n)}{\sigma(S_n)}$. Potem je $E(Z_n) = 0$ in $D(Z_n) = 1$.
 
 Za $\left\{ X_n \right\}_{n \in \mathbb{N}} $ veljaj \textbf{centralni limitni zakon}, če
 \[ F_{Z_n}(x) \xrightarrow[n \to \infty]{} F_{N(0,1)}  \quad \forall x \in \mathbb{R}\]
